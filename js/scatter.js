@@ -65,7 +65,10 @@ Scatter.prototype.createVis = function() {
   .attr("class", "d3-tip")
   .offset([-8, 0])
   .style('z-index', '999999999')
-  .html(function(d) { return (d.name + "<br><img src=\"img/" + d.img + "\">"; });
+  .html(function(d) { 
+    return d.name + "<br><img src=\"img/" + d.img + "\">"; 
+  });
+
   vis.svg.call(vis.tip);
 
   // set the dimensions and margins of the graph
