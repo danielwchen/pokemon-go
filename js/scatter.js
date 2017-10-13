@@ -25,12 +25,24 @@ Scatter.prototype.initVis = function() {
 
   var vis = this;
 
+  // set the dimensions and margins of the graph
+  vis.margin = {top: 20, right: 20, bottom: 20, left: 20},
+  width = 960 - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
+
   vis.width = $(vis.parentElement).width();
   vis.height = vis.winHeight;
 
   vis.svg = d3.select(vis.parentElement).append("svg")
   .attr("width", vis.width)
   .attr("height", vis.height);
+
+  var svg = d3.select(vis.parentElement).append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform",
+    "translate(" + margin.left + "," + margin.top + ")");
 
   d3.queue()
   .defer(d3.csv, "data/finalpokemon.csv")
@@ -71,24 +83,10 @@ Scatter.prototype.createVis = function() {
 
   vis.svg.call(vis.tip);
 
-  // set the dimensions and margins of the graph
-  var margin = {top: 20, right: 20, bottom: 30, left: 50},
-  width = 960 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
 
   // set the ranges
   var x = d3.scaleLinear().range([0, width]);
   var y = d3.scaleLinear().range([height, 0]);
-
-  // append the svg obgect to the body of the page
-  // appends a 'group' element to 'svg'
-  // moves the 'group' element to the top left margin
-  var svg = d3.select(vis.parentElement).append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform",
-    "translate(" + margin.left + "," + margin.top + ")");
 
   // Scale the range of the data
   x.domain([0, d3.max(vis.fin_data, function(d) { return d.cp; })]);
@@ -101,12 +99,13 @@ Scatter.prototype.createVis = function() {
   .attr("r", 5)
   .attr("cx", function(d) { return x(d.cp); })
   .attr("cy", function(d) { return y(d.attack); })
-  .attr("fill", "none")
+  .attr("fill-opacity", 0)
   .attr("stroke", "black")
+  .attr("stroke-width", 3)
   .on("mouseover", function(d) {
     vis.tip.show(d);
   })
-  .on("mouseoff", function(d) {
+  .on("mouseout", function(d) {
     vis.tip.hide;
   });
 
