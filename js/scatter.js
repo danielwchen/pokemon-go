@@ -86,7 +86,7 @@ Scatter.prototype.createVis = function() {
 
   // Add the scatterplot
   svg.selectAll("dot")
-  .data(data)
+  .data(vis.fin_data)
   .enter().append("circle")
   .attr("r", 5)
   .attr("cx", function(d) { return x(d.date); })
