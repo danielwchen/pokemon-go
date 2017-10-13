@@ -61,6 +61,13 @@ Scatter.prototype.wrangleData = function(data) {
 Scatter.prototype.createVis = function() {
   var vis = this;
 
+  vis.tip = d3.tip()
+  .attr("class", "d3-tip")
+  .offset([-8, 0])
+  .style('z-index', '999999999')
+  .html(function(d) { return (d.name + "<br><img src=\"img/" + d.img + "\">"; });
+  vis.svg.call(vis.tip);
+
   // set the dimensions and margins of the graph
   var margin = {top: 20, right: 20, bottom: 30, left: 50},
   width = 960 - margin.left - margin.right,
@@ -92,7 +99,13 @@ Scatter.prototype.createVis = function() {
   .attr("cx", function(d) { return x(d.cp); })
   .attr("cy", function(d) { return y(d.attack); })
   .attr("fill", "none")
-  .attr("stroke", "black");
+  .attr("stroke", "black")
+  .on("mouseover", function(d) {
+    vis.tip.show(d);
+  })
+  .on("mouseoff", function(d) {
+    vis.tip.hide;
+  });
 
   // Add the X Axis
   svg.append("g")
