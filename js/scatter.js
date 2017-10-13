@@ -90,7 +90,9 @@ Scatter.prototype.createVis = function() {
   .enter().append("circle")
   .attr("r", 5)
   .attr("cx", function(d) { return x(d.cp); })
-  .attr("cy", function(d) { return y(d.attack); });
+  .attr("cy", function(d) { return y(d.attack); })
+  .attr("fill", "none")
+  .attr("stroke", "black");
 
   // Add the X Axis
   svg.append("g")
