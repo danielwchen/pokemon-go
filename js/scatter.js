@@ -89,8 +89,8 @@ Scatter.prototype.createVis = function() {
   .data(vis.fin_data)
   .enter().append("circle")
   .attr("r", 5)
-  .attr("cx", function(d) { return x(d.date); })
-  .attr("cy", function(d) { return y(d.close); });
+  .attr("cx", function(d) { return x(d.cp); })
+  .attr("cy", function(d) { return y(d.attack); });
 
   // Add the X Axis
   svg.append("g")
