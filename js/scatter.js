@@ -14,31 +14,30 @@
   this.x_labels;
   this.y_labels;
   this.opacities;
+
+  // Normal Type: A8A77A
+  // Fire Type:  EE8130
+  // Water Type:  6390F0
+  // Electric Type:  F7D02C
+  // Grass Type:  7AC74C
+  // Ice Type:  96D9D6
+  // Fighting Type:  C22E28
+  // Poison Type:  A33EA1
+  // Ground Type:  E2BF65
+  // Flying Type:  A98FF3
+  // Psychic Type:  F95587
+  // Bug Type:  A6B91A
+  // Rock Type:  B6A136
+  // Ghost Type:  735797
+  // Dragon Type:  6F35FC
+  // Dark Type:  705746
+  // Steel Type:  B7B7CE
+  // Fairy Type:  D685AD
   this.colors = ['#A8A77A','#EE8130','#6390F0','#F7D02C','#7AC74C',
   '#96D9D6','#C22E28','#A33EA1','#E2BF65','#A98FF3',
   '#F95587','#A6B91A','#B6A136','#735797','#6F35FC',
-  '#705746','#B7B7CE','#D685AD']
-  ;
-
-    // Normal Type: A8A77A
-    // Fire Type:  EE8130
-    // Water Type:  6390F0
-    // Electric Type:  F7D02C
-    // Grass Type:  7AC74C
-    // Ice Type:  96D9D6
-    // Fighting Type:  C22E28
-    // Poison Type:  A33EA1
-    // Ground Type:  E2BF65
-    // Flying Type:  A98FF3
-    // Psychic Type:  F95587
-    // Bug Type:  A6B91A
-    // Rock Type:  B6A136
-    // Ghost Type:  735797
-    // Dragon Type:  6F35FC
-    // Dark Type:  705746
-    // Steel Type:  B7B7CE
-    // Fairy Type:  D685AD
-  this.bottomoffset = 120;
+  '#705746','#B7B7CE','#D685AD'];
+  
 
   this.initVis();
 };
