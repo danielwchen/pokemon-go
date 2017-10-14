@@ -26,23 +26,16 @@ Scatter.prototype.initVis = function() {
   var vis = this;
 
   // set the dimensions and margins of the graph
-  vis.margin = {top: 20, right: 20, bottom: 20, left: 20},
-  width = 960 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
-
-  vis.width = $(vis.parentElement).width();
-  vis.height = vis.winHeight;
+  vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
+  vis.width = $(vis.parentElement).width() - margin.left - margin.right;
+  vis.height = vis.winHeight - margin.top - margin.bottom;
 
   vis.svg = d3.select(vis.parentElement).append("svg")
-  .attr("width", vis.width)
-  .attr("height", vis.height);
-
-  var svg = d3.select(vis.parentElement).append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
+  .attr("width", vis.width + margin.left + margin.right)
+  .attr("height", vis.height + margin.top + margin.bottom)
   .append("g")
   .attr("transform",
-    "translate(" + margin.left + "," + margin.top + ")");
+    "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
   d3.queue()
   .defer(d3.csv, "data/finalpokemon.csv")
@@ -78,27 +71,24 @@ Scatter.prototype.createVis = function() {
   .offset([-8, 0])
   .style('z-index', '999999999')
   .html(function(d) { 
-    return d.name + "<br><img src=\"img/" + d.img + "\">"; 
+    return d.name + "<br><img src=\"img/" + d.img + "\" height=\"60px\" width=\"auto\">"; 
   });
 
   vis.svg.call(vis.tip);
 
+  vis.x = d3.scaleLinear().range([0, width]);
+  vis.y = d3.scaleLinear().range([height, 0]);
 
-  // set the ranges
-  var x = d3.scaleLinear().range([0, width]);
-  var y = d3.scaleLinear().range([height, 0]);
-
-  // Scale the range of the data
-  x.domain([0, d3.max(vis.fin_data, function(d) { return d.cp; })]);
-  y.domain([0, d3.max(vis.fin_data, function(d) { return d.attack; })]);
+  vis.setX(0);
+  vis.setY(0);
 
   // Add the scatterplot
   svg.selectAll("dot")
   .data(vis.fin_data)
   .enter().append("circle")
   .attr("r", 5)
-  .attr("cx", function(d) { return x(d.cp); })
-  .attr("cy", function(d) { return y(d.attack); })
+  .attr("cx", function(d) { return vis.x(d.cp); })
+  .attr("cy", function(d) { return vis.y(d.attack); })
   .attr("fill-opacity", 0)
   .attr("stroke", "black")
   .attr("stroke-width", 3)
@@ -128,33 +118,43 @@ Scatter.prototype.updateVis = function() {
 
 }
 
-Scatter.prototype.resize = function() {
+Scatter.prototype.resize = function(winHeight) {
   var vis = this;
 
-  vis.width = $(vis.parentElement).width();
-  vis.svg.attr("width",vis.width);
+  vis.winHeight = winHeight;
+
+  vis.width = $(vis.parentElement).width() - vis.margin.left - vis.margin.right;
+  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
+
+  vis.svg
+  .attr("width", width + vis.margin.left + vis.margin.right)
+  .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
+  .attr("transform",
+    "translate(" + margin.left + "," + margin.top + ")");
+
+  vis.x.range([0, vis.width]);
+  vis.y.range([vis.height, 0]);
 
   vis.updateVis;
 
 }
 
-Scatter.prototype.getOpacity = function(num) {
+Scatter.prototype.setX = function(ind) {
   var vis = this;
 
+  vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
+    return d.cp; 
+  })]);
 
-  return 1;
 }
 
-Scatter.prototype.getXPosition = function(num) {
+Scatter.prototype.setY = function(ind) {
   var vis = this;
 
-  return vis.positions[num];
-}
+  vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
+    return d.attack; 
+  })]);
 
-Scatter.prototype.getYPosition = function(num) {
-  var vis = this;
-
-  return vis.positions[num];
 }
 
 Scatter.prototype.getColor = function(num) {
