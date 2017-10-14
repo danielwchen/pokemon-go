@@ -27,12 +27,12 @@ Scatter.prototype.initVis = function() {
 
   // set the dimensions and margins of the graph
   vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
-  vis.width = $(vis.parentElement).width() - margin.left - margin.right;
-  vis.height = vis.winHeight - margin.top - margin.bottom;
+  vis.width = $(vis.parentElement).width() - vis.margin.left - vis.margin.right;
+  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
   vis.svg = d3.select(vis.parentElement).append("svg")
-  .attr("width", vis.width + margin.left + margin.right)
-  .attr("height", vis.height + margin.top + margin.bottom)
+  .attr("width", vis.width + vis.margin.left + vis.margin.right)
+  .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
   .append("g")
   .attr("transform",
     "translate(" + vis.margin.left + "," + vis.margin.top + ")");
@@ -130,7 +130,7 @@ Scatter.prototype.resize = function(winHeight) {
   .attr("width", width + vis.margin.left + vis.margin.right)
   .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
   .attr("transform",
-    "translate(" + margin.left + "," + margin.top + ")");
+    "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
   vis.x.range([0, vis.width]);
   vis.y.range([vis.height, 0]);
