@@ -109,13 +109,12 @@ Scatter.prototype.createVis = function() {
   vis.xAxis = vis.svg.append("g")
   .call(d3.axisLeft(vis.y));
 
-
+  vis.updateVis();
 };
 
 Scatter.prototype.updateVis = function() {
   var vis = this;
 
-  
   vis.setX(0);
   vis.setY(0);
 
