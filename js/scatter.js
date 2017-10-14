@@ -231,3 +231,34 @@ Scatter.prototype.getColor = function(type) {
 //   vis.updateVis();
   
 // }
+
+
+// function getProperYValue(d) {
+//   if (d3.select(".form-control").property("value") == "goals") {
+//     return d.GOALS;
+//   } else if (d3.select(".form-control").property("value") == "averagegoals") {
+//     return d.AVERAGE_GOALS;
+//   } else if (d3.select(".form-control").property("value") == "matches") {
+//     return d.MATCHES;
+//   } else if (d3.select(".form-control").property("value") == "teams") {
+//     return d.TEAMS;
+//   } else {
+//     return d.AVERAGE_ATTENDANCE;
+//   }
+// }
+
+
+// d3.select("#ranking-type")
+//   .on("change", function() {
+//     updateVisualization();
+//   });
+
+// d3.select("#startdate")
+//   .on("change", function() {
+//     updateVisualization();
+//   });
+
+// d3.select("#enddate")
+//   .on("change", function() {
+//     updateVisualization();
+//   });

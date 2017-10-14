@@ -37,13 +37,3 @@ d3.graphScroll()
 .on('active', function(i){ 
   console.log(i + 'th section active');
 })
-
-// d3.graphScroll()
-// .container(d3.select('.container-2'))
-// .graph(d3.selectAll('.container-2 #graph'))
-// .eventId('uniqueId1')
-// .sections(d3.selectAll('.container-2 #sections > div'))
-// .on('active', function(i){
-//   personChart.updateInd(i);
-//   // console.log(i + 'th section active') 
-// })
