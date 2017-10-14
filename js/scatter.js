@@ -14,8 +14,30 @@
   this.x_labels;
   this.y_labels;
   this.opacities;
-  this.colors;
+  this.colors = ['#A8A77A','#EE8130','#6390F0','#F7D02C','#7AC74C',
+  '#96D9D6','#C22E28','#A33EA1','#E2BF65','#A98FF3',
+  '#F95587','#A6B91A','#B6A136','#735797','#6F35FC',
+  '#705746','#B7B7CE','#D685AD']
+  ;
 
+    // Normal Type: A8A77A
+    // Fire Type:  EE8130
+    // Water Type:  6390F0
+    // Electric Type:  F7D02C
+    // Grass Type:  7AC74C
+    // Ice Type:  96D9D6
+    // Fighting Type:  C22E28
+    // Poison Type:  A33EA1
+    // Ground Type:  E2BF65
+    // Flying Type:  A98FF3
+    // Psychic Type:  F95587
+    // Bug Type:  A6B91A
+    // Rock Type:  B6A136
+    // Ghost Type:  735797
+    // Dragon Type:  6F35FC
+    // Dark Type:  705746
+    // Steel Type:  B7B7CE
+    // Fairy Type:  D685AD
   this.bottomoffset = 120;
 
   this.initVis();
@@ -106,7 +128,9 @@ Scatter.prototype.updateVis = function() {
   .attr("cx", function(d) { return vis.x(d.cp); })
   .attr("cy", function(d) { return vis.y(d.attack); })
   .attr("fill-opacity", 0)
-  .attr("stroke", "black")
+  .attr("stroke", function(d) {
+    return getColor(d.type1);
+  })
   .attr("stroke-width", 3)
   .on("mouseover", function(d) {
     vis.tip.show(d);
@@ -156,11 +180,49 @@ Scatter.prototype.setY = function(ind) {
 
 }
 
-// Scatter.prototype.getColor = function(num) {
-//   var vis = this;
+Scatter.prototype.getColor = function(type) {
+  var vis = this;
 
-//   return vis.colors[num];
-// }
+  if (type == "Normal") {
+    return vis.colors[0];
+  } else if (type == "Fire") {
+    return vis.colors[1];
+  } else if (type == "Water") {
+    return vis.colors[2];
+  } else if (type == "Electric") {
+    return vis.colors[3];
+  } else if (type == "Grass") {
+    return vis.colors[4];
+  } else if (type == "Ice") {
+    return vis.colors[5];
+  } else if (type == "Fighting") {
+    return vis.colors[6];
+  } else if (type == "Poison") {
+    return vis.colors[7];
+  } else if (type == "Ground") {
+    return vis.colors[8];
+  } else if (type == "Flying") {
+    return vis.colors[9];
+  } else if (type == "Psychic") {
+    return vis.colors[10];
+  } else if (type == "Bug") {
+    return vis.colors[11];
+  } else if (type == "Rock") {
+    return vis.colors[12];
+  } else if (type == "Ghost") {
+    return vis.colors[13];
+  } else if (type == "Dragon") {
+    return vis.colors[14];
+  } else if (type == "Dark") {
+    return vis.colors[15];
+  } else if (type == "Steel") {
+    return vis.colors[16];
+  } else if (type == "Fairy") {
+    return vis.colors[17];
+  } else {
+    return "black";
+  }
+}
 
 // Scatter.prototype.updateInd = function(ind) {
 //   var vis = this;
