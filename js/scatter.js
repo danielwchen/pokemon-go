@@ -127,7 +127,7 @@ Scatter.prototype.updateVis = function() {
   .attr("cy", function(d) { return vis.y(d.attack); })
   .attr("fill-opacity", 0)
   .attr("stroke", function(d) {
-    return getColor(d.type1);
+    return vis.getColor(d.type1);
   })
   .attr("stroke-width", 3)
   .on("mouseover", function(d) {
