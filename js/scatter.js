@@ -122,6 +122,7 @@ Scatter.prototype.createVis = function() {
   .attr("r", 10)
   .attr("cx", function(d) { return vis.x(d.cp); })
   .attr("cy", function(d) { return vis.y(d.attack); })
+  .attr("stroke-opacity", .8)
   .attr("fill-opacity", 0)
   .attr("stroke", function(d) {
     return vis.getColor(d.type1);

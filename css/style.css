@@ -143,3 +143,7 @@ body{
 #vis {
   background-color: #eee;
 }
+
+.dots:hover {
+  opacity: 1;
+}
