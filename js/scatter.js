@@ -98,8 +98,8 @@ Scatter.prototype.createVis = function() {
 
   vis.svg.call(vis.tip);
 
-  vis.x = d3.scaleLinear().range([0, width]);
-  vis.y = d3.scaleLinear().range([height, 0]);
+  vis.x = d3.scaleLinear().range([0, vis.width]);
+  vis.y = d3.scaleLinear().range([vis.height, 0]);
 
   // Add the X Axis
   svg.append("g")
@@ -150,7 +150,7 @@ Scatter.prototype.resize = function(winHeight) {
   vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
   vis.svg
-  .attr("width", width + vis.margin.left + vis.margin.right)
+  .attr("width", vis.width + vis.margin.left + vis.margin.right)
   .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
   .attr("transform",
     "translate(" + vis.margin.left + "," + vis.margin.top + ")");
