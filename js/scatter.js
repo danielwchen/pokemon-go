@@ -109,7 +109,7 @@ Scatter.prototype.createVis = function() {
   .call(d3.axisBottom(vis.x));
 
   // Add the Y Axis
-  vis.xAxis = vis.svg.append("g")
+  vis.yAxis = vis.svg.append("g")
   .call(d3.axisLeft(vis.y));
 
 
@@ -171,7 +171,7 @@ Scatter.prototype.resize = function(winHeight) {
   .attr("transform", "translate(0," + vis.height + ")")
   .call(d3.axisBottom(vis.x));
 
-  vis.xAxis
+  vis.yAxis
   .call(d3.axisLeft(vis.y));
 
   vis.updateVis();
