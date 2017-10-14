@@ -120,7 +120,7 @@ Scatter.prototype.updateVis = function() {
   vis.setY(0);
 
   // Add the scatterplot
-  svg.selectAll("dot")
+  vis.svg.selectAll("dot")
   .data(vis.fin_data)
   .enter().append("circle")
   .attr("r", 10)
