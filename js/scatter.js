@@ -100,7 +100,6 @@ Scatter.prototype.createVis = function() {
   vis.x = d3.scaleLinear().range([0, vis.width]);
   vis.y = d3.scaleLinear().range([vis.height, 0]);
 
-
   vis.setX(0);
   vis.setY(0);
 
@@ -267,8 +266,12 @@ Scatter.prototype.getColor = function(type) {
 
 
 d3.select("#x-form")
-  .on("change", function() {
-    updateVisualization();
+  .on("change", function(d) {
+    console.log(d);
+
+
+
+    // updateVisualization();
   });
 
 d3.select("#y-form")
