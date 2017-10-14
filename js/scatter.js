@@ -157,6 +157,13 @@ Scatter.prototype.resize = function(winHeight) {
   vis.x.range([0, vis.width]);
   vis.y.range([vis.height, 0]);
 
+  vis.xAxis
+  .attr("transform", "translate(0," + vis.height + ")")
+  .call(d3.axisBottom(vis.x));
+
+  vis.xAxis
+  .call(d3.axisLeft(vis.y));
+
   vis.updateVis();
 
 }
