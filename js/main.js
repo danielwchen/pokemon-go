@@ -2,7 +2,7 @@
  * Created by Daniel on 7/27/17.
  */
 
-console.log("updated2")
+console.log("updated3")
 
  var w = window,
  d = document,

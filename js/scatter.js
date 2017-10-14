@@ -102,7 +102,7 @@ Scatter.prototype.updateVis = function() {
   svg.selectAll("dot")
   .data(vis.fin_data)
   .enter().append("circle")
-  .attr("r", 5)
+  .attr("r", 10)
   .attr("cx", function(d) { return vis.x(d.cp); })
   .attr("cy", function(d) { return vis.y(d.attack); })
   .attr("fill-opacity", 0)
