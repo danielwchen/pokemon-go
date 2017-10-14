@@ -20,6 +20,7 @@ function checkWinStat() {
 
 $( window ).resize(function() {
   checkWinStat();
+  scatter.resize(y);
 });
 
 var scatter;
