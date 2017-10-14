@@ -100,6 +100,10 @@ Scatter.prototype.createVis = function() {
   vis.x = d3.scaleLinear().range([0, vis.width]);
   vis.y = d3.scaleLinear().range([vis.height, 0]);
 
+
+  vis.setX(0);
+  vis.setY(0);
+
   // Add the X Axis
   vis.xAxis = vis.svg.append("g")
   .attr("transform", "translate(0," + vis.height + ")")
@@ -261,17 +265,66 @@ Scatter.prototype.getColor = function(type) {
 // }
 
 
-// d3.select("#ranking-type")
-//   .on("change", function() {
-//     updateVisualization();
-//   });
+d3.select("#x-form")
+  .on("change", function() {
+    updateVisualization();
+  });
 
-// d3.select("#startdate")
-//   .on("change", function() {
-//     updateVisualization();
-//   });
+d3.select("#y-form")
+  .on("change", function() {
+    updateVisualization();
+  });
 
-// d3.select("#enddate")
-//   .on("change", function() {
-//     updateVisualization();
-//   });
+d3.select("#size-form")
+  .on("change", function() {
+    updateVisualization();
+  });
+
+d3.select("#shape-form")
+  .on("change", function() {
+    updateVisualization();
+  });
+
+
+// <form class="form-inline">
+//       <div class="form-group">
+//         <label>X-axis:</label>
+//         <select class="form-control" id="x-form">
+//           <option value="att">Attack</option>
+//           <option value="def">Defense</option>
+//           <option value="cp">Max CP</option>
+//         </select>
+//       </div>
+//     </form>
+
+//     <form class="form-inline">
+//       <div class="form-group">
+//         <label>Y-axis:</label>
+//         <select class="form-control" id="y-form">
+//           <option value="att">Attack</option>
+//           <option value="def">Defense Goals</option>
+//           <option value="cp">Max CP</option>
+//         </select>
+//       </div>
+//     </form>
+
+//     <form class="form-inline">
+//       <div class="form-group">
+//         <label>Size:</label>
+//         <select class="form-control" id="size-form">
+//           <option value="none">None</option>
+//           <option value="cp">Max CP</option>
+//         </select>
+//       </div>
+//     </form>
+
+//     <form class="form-inline">
+//       <div class="form-group">
+//         <label>Shape:</label>
+//         <select class="form-control" id="shape-form">
+//           <option value="none">None</option>
+//           <option value="type">Number of Types</option>
+//           <option value="evol">Evolution Stage</option>
+//         </select>
+//       </div>
+//     </form>
