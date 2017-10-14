@@ -109,19 +109,12 @@ Scatter.prototype.createVis = function() {
   vis.xAxis = vis.svg.append("g")
   .call(d3.axisLeft(vis.y));
 
-  vis.updateVis();
-};
-
-Scatter.prototype.updateVis = function() {
-  var vis = this;
-
-  vis.setX(0);
-  vis.setY(0);
 
   // Add the scatterplot
-  vis.svg.selectAll("dot")
+  vis.dots = vis.svg.selectAll(".dots")
   .data(vis.fin_data)
   .enter().append("circle")
+  .attr("class", "dots")
   .attr("r", 10)
   .attr("cx", function(d) { return vis.x(d.cp); })
   .attr("cy", function(d) { return vis.y(d.attack); })
@@ -134,8 +127,22 @@ Scatter.prototype.updateVis = function() {
     vis.tip.show(d);
   })
   .on("mouseout", function(d) {
-    vis.tip.hide;
+    vis.tip.hide(d);
   });
+
+  vis.updateVis();
+};
+
+Scatter.prototype.updateVis = function() {
+  var vis = this;
+
+  vis.setX(0);
+  vis.setY(0);
+
+  vis.dots.transition().duration(200)
+  .attr("cx", function(d) { return vis.x(d.cp); })
+  .attr("cy", function(d) { return vis.y(d.attack); })
+
 
 }
 
