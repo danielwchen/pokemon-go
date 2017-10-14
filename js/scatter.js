@@ -25,18 +25,6 @@ Scatter.prototype.initVis = function() {
 
   var vis = this;
 
-  // set the dimensions and margins of the graph
-  vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
-  vis.width = $(vis.parentElement).width() - vis.margin.left - vis.margin.right;
-  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
-
-  vis.svg = d3.select(vis.parentElement).append("svg")
-  .attr("width", vis.width + vis.margin.left + vis.margin.right)
-  .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
-  .append("g")
-  .attr("transform",
-    "translate(" + vis.margin.left + "," + vis.margin.top + ")");
-
   d3.queue()
   .defer(d3.csv, "data/finalpokemon.csv")
   .await(function(error, data) {
@@ -66,6 +54,18 @@ Scatter.prototype.wrangleData = function(data) {
 Scatter.prototype.createVis = function() {
   var vis = this;
 
+  // set the dimensions and margins of the graph
+  vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
+  vis.width = $(vis.parentElement).width() - vis.margin.left - vis.margin.right;
+  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
+
+  vis.svg = d3.select(vis.parentElement).append("svg")
+  .attr("width", vis.width + vis.margin.left + vis.margin.right)
+  .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
+  .append("g")
+  .attr("transform",
+    "translate(" + vis.margin.left + "," + vis.margin.top + ")");
+
   vis.tip = d3.tip()
   .attr("class", "d3-tip")
   .offset([-8, 0])
@@ -79,6 +79,22 @@ Scatter.prototype.createVis = function() {
   vis.x = d3.scaleLinear().range([0, width]);
   vis.y = d3.scaleLinear().range([height, 0]);
 
+  // Add the X Axis
+  svg.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x));
+
+  // Add the Y Axis
+  svg.append("g")
+  .call(d3.axisLeft(y));
+
+
+};
+
+Scatter.prototype.updateVis = function() {
+  var vis = this;
+
+  
   vis.setX(0);
   vis.setY(0);
 
@@ -99,23 +115,6 @@ Scatter.prototype.createVis = function() {
     vis.tip.hide;
   });
 
-  // Add the X Axis
-  svg.append("g")
-  .attr("transform", "translate(0," + height + ")")
-  .call(d3.axisBottom(x));
-
-  // Add the Y Axis
-  svg.append("g")
-  .call(d3.axisLeft(y));
-
-
-};
-
-Scatter.prototype.updateVis = function() {
-  var vis = this;
-
-  
-
 }
 
 Scatter.prototype.resize = function(winHeight) {
@@ -135,7 +134,7 @@ Scatter.prototype.resize = function(winHeight) {
   vis.x.range([0, vis.width]);
   vis.y.range([vis.height, 0]);
 
-  vis.updateVis;
+  vis.updateVis();
 
 }
 
@@ -157,17 +156,17 @@ Scatter.prototype.setY = function(ind) {
 
 }
 
-Scatter.prototype.getColor = function(num) {
-  var vis = this;
+// Scatter.prototype.getColor = function(num) {
+//   var vis = this;
 
-  return vis.colors[num];
-}
+//   return vis.colors[num];
+// }
 
-Scatter.prototype.updateInd = function(ind) {
-  var vis = this;
+// Scatter.prototype.updateInd = function(ind) {
+//   var vis = this;
 
-  vis.currInd = ind;
+//   vis.currInd = ind;
 
-  vis.updateVis();
+//   vis.updateVis();
   
-}
+// }
