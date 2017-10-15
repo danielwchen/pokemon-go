@@ -159,30 +159,7 @@ Scatter.prototype.createVis = function() {
   // .style("text-anchor", "end")
   // .text(function(d) { return d;});
 
-  vis.legend_rect = vis.svg.selectAll(".legend-rect")
-  .data(vis.c.domain())
-  .enter().append("rect")
-  .attr("class", "legend-rect")
-  .attr("x", vis.width + 36)
-  .attr("y", function(d,i) { return i*20+15; })
-  .attr("width", 18)
-  .attr("height", 18)
-  .attr("stroke-opacity", .6)
-  .attr("fill-opacity", .2)
-  .style("fill", vis.c)
-  .style("stroke", vis.c)
-  .attr("stroke-width", 3);
-
-  vis.legend_text = vis.svg.selectAll(".legend-text")
-  .data(vis.c.domain())
-  .enter().append("text")
-  .attr("class", "legend-text")
-  .attr("x", vis.width + 28)
-  .attr("y", function(d,i) {return i*20+15+9; })
-  .attr("dy", ".35em")
-  .style("text-anchor", "end")
-  .text(function(d) { return d;});
-
+  vis.initLegend();
 
   vis.dots = vis.svg.selectAll(".dots")
   .data(vis.fin_data)
@@ -220,33 +197,10 @@ Scatter.prototype.updateVis = function() {
   vis.yLabel
   .text(vis.y_stat);
 
-  vis.legend_rect.enter().append("rect")
-  .attr("class", "legend-rect")
-  .attr("x", vis.width + 36)
-  .attr("y", function(d,i) { return i*20+15; })
-  .attr("width", 18)
-  .attr("height", 18)
-  .attr("stroke-opacity", .6)
-  .attr("fill-opacity", .2)
-  .style("fill", vis.c)
-  .style("stroke", vis.c)
-  .attr("stroke-width", 3);
-
-  vis.legend_rect.exit().remove();
-
-  vis.legend_text.enter().append("text")
-  .attr("class", "legend-text")
-  .attr("x", vis.width + 28)
-  .attr("y", function(d,i) {return i*20+15+9; })
-  .attr("dy", ".35em")
-  .style("text-anchor", "end")
-  .text(function(d) { return d;});
-
-  vis.legend_text.exit().remove();
-
-  // var rects = vis.legend.selectAll("rect").enter()
+  // vis.legend_rect.enter().append("rect")
   // .attr("class", "legend-rect")
   // .attr("x", vis.width + 36)
+  // .attr("y", function(d,i) { return i*20+15; })
   // .attr("width", 18)
   // .attr("height", 18)
   // .attr("stroke-opacity", .6)
@@ -255,13 +209,17 @@ Scatter.prototype.updateVis = function() {
   // .style("stroke", vis.c)
   // .attr("stroke-width", 3);
 
-  // var texts = vis.legend.selectAll("text").enter()
-  // .append("text")
+  // vis.legend_rect.exit().remove();
+
+  // vis.legend_text.enter().append("text")
+  // .attr("class", "legend-text")
   // .attr("x", vis.width + 28)
-  // .attr("y", 9)
+  // .attr("y", function(d,i) {return i*20+15+9; })
   // .attr("dy", ".35em")
   // .style("text-anchor", "end")
   // .text(function(d) { return d;});
+
+  // vis.legend_text.exit().remove();
 
 
   vis.dots.transition().duration(500)
@@ -421,4 +379,83 @@ Scatter.prototype.pinType = function(type) {
   }
 
   vis.updateVis();
+}
+
+
+Scatter.prototype.initLegend = function() {
+  var vis = this;
+
+  
+
+  vis.legend_rect1 = vis.svg.selectAll(".legend-rect1")
+  .data(vis.c.domain())
+  .enter().append("rect")
+  .attr("class", "legend-rect1")
+  .attr("x", vis.width + 36)
+  .attr("y", function(d,i) { return i*20+15; })
+  .attr("width", 18)
+  .attr("height", 18)
+  .attr("stroke-opacity", .6)
+  .attr("fill-opacity", .2)
+  .style("fill", vis.c)
+  .style("stroke", vis.c)
+  .attr("stroke-width", 3);
+
+  vis.legend_text1 = vis.svg.selectAll(".legend-text1")
+  .data(vis.c.domain())
+  .enter().append("text")
+  .attr("class", "legend-text1")
+  .attr("x", vis.width + 28)
+  .attr("y", function(d,i) {return i*20+15+9; })
+  .attr("dy", ".35em")
+  .style("text-anchor", "end")
+  .text(function(d) { return d;});
+
+  vis.legend_rect2 = vis.svg.selectAll(".legend-rect2")
+  .data(vis.c.domain())
+  .enter().append("rect")
+  .attr("class", "legend-rect1")
+  .attr("x", vis.width + 36)
+  .attr("y", function(d,i) { return i*20+15; })
+  .attr("width", 18)
+  .attr("height", 18)
+  .attr("stroke-opacity", .6)
+  .attr("fill-opacity", .2)
+  .style("fill", vis.c)
+  .style("stroke", vis.c)
+  .attr("stroke-width", 3);
+
+  vis.legend_text2 = vis.svg.selectAll(".legend-text2")
+  .data(vis.c.domain())
+  .enter().append("text")
+  .attr("class", "legend-text1")
+  .attr("x", vis.width + 28)
+  .attr("y", function(d,i) {return i*20+15+9; })
+  .attr("dy", ".35em")
+  .style("text-anchor", "end")
+  .text(function(d) { return d;});
+
+  vis.legend_rect3 = vis.svg.selectAll(".legend-rect3")
+  .data(vis.c.domain())
+  .enter().append("rect")
+  .attr("class", "legend-rect3")
+  .attr("x", vis.width + 36)
+  .attr("y", function(d,i) { return i*20+15; })
+  .attr("width", 18)
+  .attr("height", 18)
+  .attr("stroke-opacity", .6)
+  .attr("fill-opacity", .2)
+  .style("fill", vis.c)
+  .style("stroke", vis.c)
+  .attr("stroke-width", 3);
+
+  vis.legend_text3 = vis.svg.selectAll(".legend-text3")
+  .data(vis.c.domain())
+  .enter().append("text")
+  .attr("class", "legend-text3")
+  .attr("x", vis.width + 28)
+  .attr("y", function(d,i) {return i*20+15+9; })
+  .attr("dy", ".35em")
+  .style("text-anchor", "end")
+  .text(function(d) { return d;});
 }
