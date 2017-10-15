@@ -346,17 +346,17 @@ Scatter.prototype.pin = function(pokemon) {
 Scatter.prototype.pinType = function(type) {
   var vis = this;
 
-  if (pokemon) {
+  if (type) {
     vis.dots.transition().duration(80)
     .attr("stroke-opacity",function(d) {
-      if(pokemon.includes(d.name)) {
+      if(d.type1 == type || d.type2 == type) {
         return .8;
       } else {
         return .1;
       }
     })
     .attr("fill-opacity",function(d) {
-      if(pokemon.includes(d.name)) {
+      if(d.type1 == type || d.type2 == type) {
         return .8;
       } else {
         return .1;
