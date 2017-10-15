@@ -156,3 +156,7 @@ body{
   fill-opacity: .4;
   stroke-opacity: 1;
 };
+
+.label {
+  font: 11px sans-serif;
+}

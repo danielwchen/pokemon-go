@@ -109,7 +109,7 @@ Scatter.prototype.createVis = function() {
   .append("text")
   .attr("class", "x-label axis-label")
   .attr("x", vis.width)
-  .attr("y", -6)
+  .attr("y", vis.height-6)
   .style("text-anchor", "end")
   .text(vis.x_stat);
 
@@ -149,7 +149,7 @@ Scatter.prototype.createVis = function() {
   .data(vis.c.domain())
   .enter().append("g")
   .attr("class", "legend")
-  .attr("transform", function(d, i) { return "translate(450," + i * 20 + ")"; });
+  .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 50) + ")"; });
 
   vis.legend.append("rect")
   // .attr("class", "legend-rect")
