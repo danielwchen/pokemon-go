@@ -122,10 +122,18 @@ Scatter.prototype.createVis = function() {
   .attr("cx", function(d) { return vis.x(d.cp); })
   .attr("cy", function(d) { return vis.y(d.attack); })
   .attr("stroke-opacity", .8)
-  .attr("fill-opacity", 0)
+  .attr("fill-opacity", .4)
   .attr("stroke", function(d) {
     return vis.getColor(d.type1);
   })
+  .attr("fill", function(d) {
+    if (d.type2) {
+      return vis.getColor(d.type2);
+    } else {
+      return vis.getColor(d.type1);
+    }
+  })
+
   .attr("stroke-width", 3)
   .on("mouseover", function(d) {
     vis.tip.show(d);
