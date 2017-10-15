@@ -36,8 +36,8 @@ d3.graphScroll()
 .container(d3.select('#container'))
 .sections(d3.selectAll('#sections > div'))
 .on('active', function(i){
-  console.log(i + 'th section active');
   updateScatter(i);
+  console.log(i + 'th section active');
 })
 
 d3.select("#x-form")
@@ -89,13 +89,13 @@ function updateScatter (ind) {
     scatterStatic.pin(['Mewtwo', 'Magikarp', 'Gyarados']);
     scatterStatic.pinType();
   } else if (ind == 6) {
-    scatterStatic.setX('cp');
+    scatterStatic.setX('attack'); //cp
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
     scatterStatic.pin(['Mewtwo', 'Magikarp']);
     scatterStatic.pinType();
   } else if (ind == 7) {
-    scatterStatic.setX('cp');
+    scatterStatic.setX('attack'); //cp
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
     scatterStatic.pin();
