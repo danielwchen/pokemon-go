@@ -90,67 +90,67 @@ function updateScatter (ind) {
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
     scatterStatic.pin(['Mewtwo', 'Magikarp', 'Gyarados']);
-    scatterStatic.pinType();
+    // scatterStatic.pinType();
   } else if (ind == 6) {
     scatterStatic.setX('cp'); //cp
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
     scatterStatic.pin(['Mewtwo', 'Magikarp']);
-    scatterStatic.pinType();
+    // scatterStatic.pinType();
   } else if (ind == 7) {
     scatterStatic.setX('cp'); //cp
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
     scatterStatic.pin();
-    scatterStatic.pinType();
+    // scatterStatic.pinType();
   } else if (ind == 8) {
     scatterStatic.setX('attack');
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
     scatterStatic.pin();
-    scatterStatic.pinType();
+    // scatterStatic.pinType();
   } else if (ind == 9) {
     scatterStatic.setX('attack');
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
-    scatterStatic.pin();
+    // scatterStatic.pin();
     scatterStatic.pinType('Bug');
   } else if (ind == 10) {
     scatterStatic.setX('attack');
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
-    scatterStatic.pin();
+    // scatterStatic.pin();
     scatterStatic.pinType('Dragon');
   } else if (ind == 11) {
     scatterStatic.setX('health');
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
-    scatterStatic.pin();
+    // scatterStatic.pin();
     scatterStatic.pinType('Normal');
   } else if (ind == 12) {
     scatterStatic.setX('attack');
     scatterStatic.setY('defense');
     scatterStatic.setC('evol');
     scatterStatic.pin();
-    scatterStatic.pinType();
+    // scatterStatic.pinType();
   } else if (ind == 13) {
     scatterStatic.setX('attack');
     scatterStatic.setY('defense');
     scatterStatic.setC('evol');
     scatterStatic.pin(['Metapod', 'Kakuna']);
-    scatterStatic.pinType();
+    // scatterStatic.pinType();
   } else if (ind == 14) {
     scatterStatic.setX('attack');
     scatterStatic.setY('defense');
     scatterStatic.setC('evol');
     scatterStatic.pin(['Onix', 'Cloyster']);
-    scatterStatic.pinType();
+    // scatterStatic.pinType();
   } else {
     scatterStatic.setX('attack');
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
     scatterStatic.pin();
-    scatterStatic.pinType();
+    // scatterStatic.pinType();
   }
 
 
