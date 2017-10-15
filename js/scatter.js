@@ -202,7 +202,7 @@ Scatter.prototype.createVis = function() {
   .on("mouseover", function(d) { vis.tip.show(d); })
   .on("mouseout", function(d) { vis.tip.hide(d); });
 
-  
+  console.log("done");
 
   vis.updateVis();
 };
@@ -381,21 +381,21 @@ Scatter.prototype.pin = function(pokemon) {
     .attr("stroke-opacity",function(d) {
       if(pokemon.includes(d.name)) {
         console.log("yes");
-        return .8;
+        return 0.8;
       } else {
-        return .1;
+        return 0.1;
       }
     })
     .attr("fill-opacity",function(d) {
       if(pokemon.includes(d.name)) {
-        return .8;
+        return 0.8;
       } else {
-        return .1;
+        return 0.1;
       }
     });
   } else {vis.dots.transition().duration(80)
-    .attr("stroke-opacity",.6)
-    .attr("fill-opacity",.2);
+    .attr("stroke-opacity",0.6)
+    .attr("fill-opacity",0.2);
   }
 
   vis.updateVis();
@@ -408,21 +408,21 @@ Scatter.prototype.pinType = function(type) {
     vis.dots.transition().duration(80)
     .attr("stroke-opacity",function(d) {
       if(d.type1 == type || d.type2 == type) {
-        return .8;
+        return 0.8;
       } else {
-        return .1;
+        return 0.1;
       }
     })
     .attr("fill-opacity",function(d) {
       if(d.type1 == type || d.type2 == type) {
-        return .8;
+        return 0.8;
       } else {
-        return .1;
+        return 0.1;
       }
     });
   } else {vis.dots.transition().duration(80)
-    .attr("stroke-opacity",.6)
-    .attr("fill-opacity",.2);
+    .attr("stroke-opacity",0.6)
+    .attr("fill-opacity",0.2);
   }
 
   vis.updateVis();
