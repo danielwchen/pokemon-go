@@ -175,8 +175,8 @@ Scatter.prototype.updateVis = function() {
   var vis = this;
 
   vis.dots.transition().duration(200)
-  .attr("cx", function(d) { return vis.x(d.cp); })
-  .attr("cy", function(d) { return vis.y(d.attack); })
+  .attr("cx", function(d) { return vis.x(d[vis.x_stat]); })
+  .attr("cy", function(d) { return vis.y(d[vis.y_stat]); })
 
 
 }
@@ -326,12 +326,10 @@ d3.select("#y-form")
 
 d3.select("#size-form")
   .on("change", function() {
-    updateVisualization();
   });
 
 d3.select("#shape-form")
   .on("change", function() {
-    updateVisualization();
   });
 
 
