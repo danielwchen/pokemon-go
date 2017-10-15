@@ -21,13 +21,15 @@
 
   // Type colors from http://www.epidemicjohto.com/t882-type-colors-hex-colors
   this.c_range = {type:['#A8A77A','#EE8130','#6390F0','#F7D02C','#7AC74C',
-  '#96D9D6','#C22E28','#A33EA1','#E2BF65','#A98FF3',
-  '#F95587','#A6B91A','#B6A136','#735797','#6F35FC',
-  '#705746','#B7B7CE','#D685AD'],
+                        '#96D9D6','#C22E28','#A33EA1','#E2BF65','#A98FF3',
+                        '#F95587','#A6B91A','#B6A136','#735797','#6F35FC',
+                        '#705746','#B7B7CE','#D685AD'],
     evol:['#F7D02C','#A6B91A','#C22E28','#6F35FC'],
     lege:['#B7B7CE','#D685AD']};
-  this.c_domain = {type:["Normal","Fire", "Water", "Electric","Grass","Ice","Fighting","Poison","Ground",
-              "Flying","Psychic","Bug","Rock","Ghost","Dragon","Dark","Steel","Fairy"],
+  this.c_domain = {type:["Normal","Fire", "Water", "Electric","Grass",
+                         "Ice","Fighting","Poison","Ground","Flying",
+                         "Psychic","Bug","Rock","Ghost","Dragon",
+                         "Dark","Steel","Fairy"],
               evol:["First", "Second","Third","Legendary"],
               lege:["Nonlegendary","Legendary"] }
   
@@ -107,7 +109,7 @@ Scatter.prototype.createVis = function() {
 
   vis.xAxis = vis.svg.append("g")
   .attr("transform", "translate(0," + vis.height + ")")
-  .call(d3.axisBottom(vis.x).tickSizeInner(-vis.width).tickPadding(10));
+  .call(d3.axisBottom(vis.x).tickPadding(10));
 
   vis.yAxis = vis.svg.append("g")
   .call(d3.axisLeft(vis.y).tickSizeInner(-vis.height).tickPadding(10));
@@ -181,7 +183,7 @@ Scatter.prototype.updateVis = function() {
   var vis = this;
 
   vis.xAxis
-  .call(d3.axisBottom(vis.x).tickSizeInner(-vis.width).tickPadding(10));
+  .call(d3.axisBottom(vis.x).tickPadding(10));
 
   vis.yAxis
   .call(d3.axisLeft(vis.y).tickSizeInner(-vis.height).tickPadding(10));

@@ -43,5 +43,5 @@ d3.select("#x-form")
 d3.select("#y-form")
 .on("change", function() { scatter.setY(d3.select("#y-form").property("value")); });
 
-d3.select("#color-form")
+d3.select("#c-form")
 .on("change", function() { scatter.setC(d3.select("#c-form").property("value")) });

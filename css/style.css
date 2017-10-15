@@ -1,5 +1,5 @@
-
 /* YOUR CSS STYLES */
+/* Pokemon colors from https://designpieces.com/palette/pokemon-logo-color-palette-hex-and-rgb/ */
 @font-face {
     font-family: Generica;
     src: url("../fonts/Generica.otf") format("opentype");
@@ -19,6 +19,7 @@
 body {
   font-family: Georgia;
   background-color: #2a75bb;
+  font-size: 16px;
 }
 
 .interlude {
@@ -29,6 +30,7 @@ body {
 
 label {
   color: #DADADA;
+  font-size: 20px;
 }
 
 #container{
@@ -57,7 +59,7 @@ label {
   border-color: #3c5aa6;
   border-radius: 25px;
   max-width: 800px;
-  box-shadow: 0 0 12px 3px #2a75bb;
+  box-shadow: 0 0 12px 3px #ffcb05;
   opacity: .8;
   font-family: Georgia;
 }
@@ -139,9 +141,12 @@ h1{
 }
 
 #vis {
-  /*width: 100%;*/
-  /*height: 100%;*/
-  background-color: #eee;
+  margin: 50px auto 50px auto;
+  /*width: 90%;*/
+  background-color: white;
+  box-shadow: 0 0 40px white;
+  border-radius: 40px;
+  min-height: 10px;
 }
 
 .dots:hover {
