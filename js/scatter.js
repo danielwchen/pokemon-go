@@ -183,10 +183,10 @@ Scatter.prototype.updateVis = function() {
   var vis = this;
 
   vis.xAxis
-  .call(d3.axisBottom(vis.x).tickPadding(10));
+  .call(d3.axisBottom(vis.x).tickSizeInner(-vis.height).tickPadding(10));
 
   vis.yAxis
-  .call(d3.axisLeft(vis.y).tickSizeInner(-vis.height).tickPadding(10));
+  .call(d3.axisLeft(vis.y).tickSizeInner(-vis.width).tickPadding(10));
 
   vis.xLabel
   .text(vis.x_stat);
