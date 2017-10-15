@@ -132,6 +132,32 @@ Scatter.prototype.createVis = function() {
   .style("text-anchor", "end")
   .text(vis.y_stat);
 
+  vis.legend = vis.svg.selectAll(".legend")
+  .data(vis.c.domain())
+  .enter().append("g")
+  .attr("class", "legend")
+  .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 15) + ")"; });
+
+  vis.legend.append("rect")
+  .attr("class", "legend-rect")
+  .attr("x", vis.width + 36)
+  .attr("width", 18)
+  .attr("height", 18)
+  .attr("stroke-opacity", .6)
+  .attr("fill-opacity", .2)
+  .style("fill", vis.c)
+  .style("stroke", vis.c)
+  .attr("stroke-width", 3);
+
+  vis.legend.append("text")
+  .attr("x", vis.width + 28)
+  .attr("y", 9)
+  .attr("dy", ".35em")
+  .style("text-anchor", "end")
+  .text(function(d) { return d;});
+
+  vis.legend.exit().remove();
+
   vis.dots = vis.svg.selectAll(".dots")
   .data(vis.fin_data)
   .enter().append("circle")
@@ -150,31 +176,7 @@ Scatter.prototype.createVis = function() {
   .on("mouseover", function(d) { vis.tip.show(d); })
   .on("mouseout", function(d) { vis.tip.hide(d); });
 
-  vis.legend = vis.svg.selectAll(".legend")
-  .data(vis.c.domain())
-  .enter().append("g")
-  .attr("class", "legend")
-  .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 20) + ")"; });
-
-  vis.legend.append("rect")
-  .attr("class", "legend-rect")
-  .attr("x", vis.width + 30)
-  .attr("width", 18)
-  .attr("height", 18)
-  .attr("stroke-opacity", .6)
-  .attr("fill-opacity", .2)
-  .style("fill", vis.c)
-  .style("stroke", vis.c)
-  .attr("stroke-width", 3);
-
-  vis.legend.append("text")
-  .attr("x", vis.width + 20)
-  .attr("y", 9)
-  .attr("dy", ".35em")
-  .style("text-anchor", "end")
-  .text(function(d) { return d;});
-
-  vis.legend.exit().remove();
+  
 
   vis.updateVis();
 };
