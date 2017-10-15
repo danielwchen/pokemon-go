@@ -47,7 +47,7 @@ body {
   position: absolute;
   top: 0px;
 
-  background-color: #eee;
+  /*background-color: #eee;*/
 }
 
 .graph-scroll-fixed #graph{
