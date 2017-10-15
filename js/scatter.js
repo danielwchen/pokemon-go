@@ -123,6 +123,21 @@ Scatter.prototype.createVis = function() {
   vis.yAxis = vis.svg.append("g")
   .call(d3.axisLeft(vis.y));
 
+  vis.xLabel = vis.svg.selectAll(".x-label")
+  .append("text")
+  .attr("class", "axis-label x-label")
+  .text(vis.x_stat)
+  .attr("transform", function(d,i) {
+    return "translate(" + (vis.width / 2) + "," + vis.height + ")";
+  });
+
+  vis.xLabel = vis.svg.selectAll(".y-label")
+  .append("text")
+  .attr("class", "axis-label y-label")
+  .text(vis.y_stat)
+  .attr("transform", function(d,i) {
+    return "translate(-10," + (vis.height / 2) + ")rotate(270)";
+  })
 
   // Add the scatterplot
   vis.dots = vis.svg.selectAll(".dots")
@@ -213,7 +228,7 @@ Scatter.prototype.setY = function(stat) {
 Scatter.prototype.setSize = function(stat) {
   var vis = this;
 
-  vis.y_stat;
+  vis.size_stat = stat;
 
   updateVisualization();
 }
