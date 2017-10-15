@@ -148,3 +148,8 @@ body{
   fill-opacity: .4;
   stroke-opacity: 1;
 }
+
+.legend-rect:hover {
+  fill-opacity: .4;
+  stroke-opacity: 1;
+};
