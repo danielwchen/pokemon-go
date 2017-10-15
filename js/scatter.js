@@ -62,7 +62,7 @@ Scatter.prototype.createVis = function() {
   var vis = this;
 
   // set the dimensions and margins of the graph
-  vis.margin = {top: 20, right: 20, bottom: 20, left: 40};
+  vis.margin = {top: 40, right: 40, bottom: 40, left: 40};
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
   vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
@@ -92,11 +92,11 @@ Scatter.prototype.createVis = function() {
               "Flying","Psychic","Bug","Rock","Ghost","Dragon","Dark","Steel","Fairy"]);
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[vis.x_stat] * 1.05; 
+    return d[vis.x_stat];
   })]);
 
   vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[vis.y_stat] * 1.05; 
+    return d[vis.y_stat];
   })]);
 
   vis.xAxis = vis.svg.append("g")
@@ -105,6 +105,10 @@ Scatter.prototype.createVis = function() {
 
   vis.yAxis = vis.svg.append("g")
   .call(d3.axisLeft(vis.y));
+
+  vis.xAxis.tickSizeInner(-vis.width);
+  vis.yAxis.tickSizeInner(-vis.height);
+
 
   vis.xLabel = vis.svg
   .append("text")
