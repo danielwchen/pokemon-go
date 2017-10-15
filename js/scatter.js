@@ -91,11 +91,11 @@ Scatter.prototype.createVis = function() {
               "Flying","Psychic","Bug","Rock","Ghost","Dragon","Dark","Steel","Fairy"]);
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[vis.x_stat] + 15; 
+    return d[vis.x_stat] * 1.05; 
   })]);
 
   vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[vis.y_stat] + 15; 
+    return d[vis.y_stat] * 1.05; 
   })]);
 
   vis.xAxis = vis.svg.append("g")
@@ -147,6 +147,7 @@ Scatter.prototype.createVis = function() {
   .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 30) + ")"; });
 
   vis.legend.append("rect")
+  .attr("class", "legend-rect")
   .attr("x", vis.width - 18)
   .attr("width", 18)
   .attr("height", 18)
