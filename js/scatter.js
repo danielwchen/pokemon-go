@@ -197,7 +197,7 @@ Scatter.prototype.updateVis = function() {
   vis.yLabel
   .text(vis.y_stat);
 
-  vis.legend.selectAll("rect").enter()
+  var rects = vis.legend.selectAll("rect").enter()
   .attr("class", "legend-rect")
   .attr("x", vis.width + 36)
   .attr("width", 18)
@@ -206,16 +206,20 @@ Scatter.prototype.updateVis = function() {
   .attr("fill-opacity", .2)
   .style("fill", vis.c)
   .style("stroke", vis.c)
-  .attr("stroke-width", 3)
+  .attr("stroke-width", 3);
+
+  rects
   .exit().remove();
 
-  vis.legend.selectAll("text").enter()
+  var texts = vis.legend.selectAll("text").enter()
   .append("text")
   .attr("x", vis.width + 28)
   .attr("y", 9)
   .attr("dy", ".35em")
   .style("text-anchor", "end")
-  .text(function(d) { return d;})
+  .text(function(d) { return d;});
+
+  texts
   .exit().remove();
 
 
