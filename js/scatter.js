@@ -245,14 +245,18 @@ Scatter.prototype.resize = function(w, h) {
   // .call(d3.axisLeft(vis.y));
 
   vis.xLabel
-  .attr("transform", function(d,i) {
-    return "translate(" + (vis.width / 2) + "," + vis.height + ")";
-  });
+  .attr("x", vis.width)
+  .attr("y", -6);
+  // .attr("transform", function(d,i) {
+  //   return "translate(" + (vis.width / 2) + "," + vis.height + ")";
+  // });
 
   vis.yLabel
-  .attr("transform", function(d,i) {
-    return "translate(-10," + (vis.height / 2) + ")rotate(270)";
-  });
+  .attr("y", 6)
+  .attr("dy", ".71em");
+  // .attr("transform", function(d,i) {
+  //   return "translate(-10," + (vis.height / 2) + ")rotate(270)";
+  // });
 
   vis.updateVis();
 
