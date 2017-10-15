@@ -71,7 +71,7 @@ Scatter.prototype.createVis = function() {
   var vis = this;
 
   // set the dimensions and margins of the graph
-  vis.margin = {top: 40, right: 80, bottom: 40, left: 40};
+  vis.margin = {top: 40, right: 80, bottom: 20, left: 40};
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
   vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
