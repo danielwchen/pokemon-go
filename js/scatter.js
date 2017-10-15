@@ -19,10 +19,16 @@
   this.y_stat = 'cp';
 
   // Type colors from http://www.epidemicjohto.com/t882-type-colors-hex-colors
-  this.colors = ['#A8A77A','#EE8130','#6390F0','#F7D02C','#7AC74C',
+  this.c_range = {type:['#A8A77A','#EE8130','#6390F0','#F7D02C','#7AC74C',
   '#96D9D6','#C22E28','#A33EA1','#E2BF65','#A98FF3',
   '#F95587','#A6B91A','#B6A136','#735797','#6F35FC',
-  '#705746','#B7B7CE','#D685AD'];
+  '#705746','#B7B7CE','#D685AD'],
+    evol:['#F7D02C','#A6B91A','#C22E28','#6F35FC'],
+    lege:['#B7B7CE','#D685AD']};
+  this.c_domain = {type:["Normal","Fire", "Water", "Electric","Grass","Ice","Fighting","Poison","Ground",
+              "Flying","Psychic","Bug","Rock","Ghost","Dragon","Dark","Steel","Fairy"],
+              evol:["First", "Second","Third","Legendary"],
+              lege:["Nonlegendary","Legendary"] }
   
 
   this.initVis();
@@ -87,9 +93,8 @@ Scatter.prototype.createVis = function() {
   vis.x = d3.scaleLinear().range([0, vis.width]);
   vis.y = d3.scaleLinear().range([vis.height, 0]);
   vis.c = d3.scaleOrdinal()
-            .range(vis.colors)
-            .domain(["Normal","Fire", "Water", "Electric","Grass","Ice","Fighting","Poison","Ground",
-              "Flying","Psychic","Bug","Rock","Ghost","Dragon","Dark","Steel","Fairy"]);
+            .range(vis.c_range.type)
+            .domain(vis.c_domain.type);
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
     return d[vis.x_stat];
@@ -265,7 +270,10 @@ Scatter.prototype.setY = function(stat) {
 Scatter.prototype.setC = function(stat) {
   var vis = this;
 
-  vis.c_stat = stat;
+  
+  vis.c = d3.scaleOrdinal()
+            .range(vis.c_range[stat])
+            .domain(vis.c_domain[stat]);
 
   vis.updateVis();
 }
