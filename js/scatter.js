@@ -233,8 +233,8 @@ Scatter.prototype.resize = function(w, h) {
   vis.winWidth = w;
   vis.winHeight = h;
 
-  console.log(winWidth);
-  console.log(winHeight);
+  console.log(vis.winWidth);
+  console.log(vis.winHeight);
 
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
   vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
