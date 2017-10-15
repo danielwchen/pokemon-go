@@ -78,7 +78,7 @@ Scatter.prototype.createVis = function() {
   .offset([-8, 0])
   .style('z-index', '999999999')
   .html(function(d) { 
-    return d.name + "<br><img src=\"img/" + d.img + "\" height=\"60px\" width=\"auto\"><br>" + vis.x_stat + ": " + d[vis.x_stat] + ", " + vis.y_stat + ": " + d[vis.y_stat]; 
+    return d.name + "<br><img src=\"img/" + d.img + "\" height=\"60px\" width=\"auto\"><br>" + vis.x_stat + ": " + d[vis.x_stat] + "<br>" + vis.y_stat + ": " + d[vis.y_stat]; 
   });
 
   vis.svg.call(vis.tip);

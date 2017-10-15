@@ -27,9 +27,7 @@ var scatter;
 
 checkWinStat();
 
-
 scatter = new Scatter("#vis", x, y);
-
 
 d3.graphScroll()
 .graph(d3.selectAll('#graph'))
@@ -38,7 +36,6 @@ d3.graphScroll()
 .on('active', function(i){ 
   console.log(i + 'th section active');
 })
-
 
 d3.select("#x-form")
   .on("change", function() {

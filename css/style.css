@@ -118,6 +118,7 @@ body{
   color: #fff;
   border-radius: 4px;
   font-size: 12px;
+  text-align: center;
 }   
 
 /* Creates a small triangle extender for the tooltip */
