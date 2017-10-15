@@ -135,15 +135,17 @@ Scatter.prototype.createVis = function() {
   .style("text-anchor", "end")
   .text(vis.y_stat);
 
-  vis.legend = vis.svg.selectAll(".legend")
-  .data(vis.c.domain())
-  .enter().append("g")
-  .attr("class", "legend")
-  .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 15) + ")"; });
+  // vis.legend = vis.svg.selectAll(".legend")
+  // .data(vis.c.domain())
+  // .enter().append("g")
+  // .attr("class", "legend")
+  // .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 15) + ")"; });
 
-  vis.legend_rect = vis.legend.append("rect")
+  vis.legend_rect = vis.svg.selectAll(".legend-rect")
+  .append("rect")
   .attr("class", "legend-rect")
   .attr("x", vis.width + 36)
+  .attr("y", function(d,i) { return i * 20 + 15; })
   .attr("width", 18)
   .attr("height", 18)
   .attr("stroke-opacity", .6)
@@ -152,9 +154,11 @@ Scatter.prototype.createVis = function() {
   .style("stroke", vis.c)
   .attr("stroke-width", 3);
 
-  vis.legend_text = vis.legend.append("text")
+  vis.legend_text = vis.svg.selectAll(".legend-text")
+  .append("text")
+  .attr("class", "legend-text")
   .attr("x", vis.width + 28)
-  .attr("y", 9)
+  .attr("y", function(d,i) { return i * 20 + 15 + 9; })
   .attr("dy", ".35em")
   .style("text-anchor", "end")
   .text(function(d) { return d;});
@@ -197,12 +201,11 @@ Scatter.prototype.updateVis = function() {
   vis.yLabel
   .text(vis.y_stat);
 
-   var text = g.selectAll("text")
-    .data(data);
-
   vis.legend_rect.enter()
+  .append("rect")
   .attr("class", "legend-rect")
   .attr("x", vis.width + 36)
+  .attr("y", function(d,i) { return i * 20 + 15; })
   .attr("width", 18)
   .attr("height", 18)
   .attr("stroke-opacity", .6)
@@ -211,9 +214,11 @@ Scatter.prototype.updateVis = function() {
   .style("stroke", vis.c)
   .attr("stroke-width", 3);
 
-  vis.legend_text.append("text")
+  vis.legend_text.enter()
+  .append("text")
+  .append("class", "legend-text")
   .attr("x", vis.width + 28)
-  .attr("y", 9)
+  .attr("y", function(d,i) { return i * 20 + 15 + 9; })
   .attr("dy", ".35em")
   .style("text-anchor", "end")
   .text(function(d) { return d;});
