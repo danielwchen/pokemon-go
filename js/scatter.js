@@ -197,9 +197,6 @@ Scatter.prototype.updateVis = function() {
   vis.yLabel
   .text(vis.y_stat);
 
-   var text = g.selectAll("text")
-    .data(data);
-
   vis.legend_rect.enter()
   .attr("class", "legend-rect")
   .attr("x", vis.width + 36)
