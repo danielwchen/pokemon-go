@@ -101,13 +101,13 @@ Scatter.prototype.createVis = function() {
 
   vis.xAxis = vis.svg.append("g")
   .attr("transform", "translate(0," + vis.height + ")")
-  .call(d3.axisBottom(vis.x));
+  .call(d3.axisBottom(vis.x).tickSizeInner(-vis.width));
 
   vis.yAxis = vis.svg.append("g")
-  .call(d3.axisLeft(vis.y));
+  .call(d3.axisLeft(vis.y).tickSizeInner(-vis.height));
 
-  vis.xAxis.tickSizeInner(-vis.width);
-  vis.yAxis.tickSizeInner(-vis.height);
+  vis.xAxis;
+  vis.yAxis;
 
 
   vis.xLabel = vis.svg
