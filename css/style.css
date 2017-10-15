@@ -81,34 +81,6 @@ h1{
   left: 0;
 }
 
-/*
-
-#container{
-  position: relative;
-  margin: 50px auto 0px auto;
-  width: 90%;
-  background-color: white;
-  box-shadow: 0 0 40px white;
-  border-radius: 40px;
-}
-
-
-#sections > div{
-  margin: 0px auto;
-  margin-bottom: 400px;
-  background: white;
-  padding: 10px;
-  border: 2px solid;
-  border-color: #3c5aa6;
-  border-radius: 25px;
-  max-width: 800px;
-  box-shadow: 0 0 12px 3px #ffcb05;
-  opacity: .8;
-  font-family: Georgia;
-}
-
-*/
-
 
 
 
@@ -164,6 +136,11 @@ form {
   position: relative;
   margin: 50px auto 0px auto;
   width: 90%;
+  background-color: white;
+  box-shadow: 0 0 40px white;
+  /*border-radius: 40px;*/
+
+
 }
 
 #sections{
@@ -177,10 +154,12 @@ form {
   background: white;
   padding: 10px;
   border: 2px solid;
+  border-color: #3c5aa6;
+  /*border-radius: 25px;*/
   width: 80%;
   max-width: 800px;
   margin: 0px auto 400px auto;
-  box-shadow: 0 0 12px 3px gray;
+  box-shadow: 0 0 12px 3px #ffcb05;
   opacity: .8;
   font-family: Georgia;
 }
