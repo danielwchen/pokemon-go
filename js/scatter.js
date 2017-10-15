@@ -15,7 +15,7 @@
   this.y_labels;
   this.opacities;
 
-  this.x_stat = 'attack';
+  this.x_stat = 'id';
   this.y_stat = 'cp';
   this.c_stat = 'type';
 
