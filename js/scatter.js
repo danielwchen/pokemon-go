@@ -84,6 +84,9 @@ Scatter.prototype.createVis = function() {
 
   vis.x = d3.scaleLinear().range([0, vis.width]);
   vis.y = d3.scaleLinear().range([vis.height, 0]);
+  vis.c = d3.scaleOrdinal().range()
+        .domain(["Fire", "Water", "Electric","Grass","Ice","Fighting","Poison","Ground",
+          "Flying","Psychic","Bug","Rock","Ghost","Dragon","Dark","Steel","Fairy"]);
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
     return d[vis.x_stat]; 
@@ -125,14 +128,17 @@ Scatter.prototype.createVis = function() {
   .attr("cy", function(d) { return vis.y(d[vis.y_stat]); })
   .attr("stroke-opacity", .6)
   .attr("fill-opacity", .2)
-  .attr("stroke", function(d) {
-    return vis.getColor(d.type1);
-  })
+  // .attr("stroke", function(d) {
+  //   return vis.getColor(d.type1);
+  // })
+  .attr("stroke", function(d) { return vis.c(d.type1); })
   .attr("fill", function(d) {
     if (d.type2) {
-      return vis.getColor(d.type2);
+      return vis.c(d.type2);
+      // return vis.getColor(d.type2);
     } else {
-      return vis.getColor(d.type1);
+      return vis.c(d.type1);
+      // return vis.getColor(d.type1);
     }
   })
   .attr("stroke-width", 3)
@@ -145,7 +151,29 @@ Scatter.prototype.createVis = function() {
 
   vis.updateVis();
 
-  // vis.legend = 
+  // vis.legend = svg.selectAll(".legend")
+  // .data()
+
+  // var legend = svg.selectAll(".legend")
+  //     .data(color.domain())
+  //   .enter().append("g")
+  //     .attr("class", "legend")
+  //     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  // // draw legend colored rectangles
+  // legend.append("rect")
+  //     .attr("x", width - 18)
+  //     .attr("width", 18)
+  //     .attr("height", 18)
+  //     .style("fill", color);
+
+  // // draw legend text
+  // legend.append("text")
+  //     .attr("x", width - 24)
+  //     .attr("y", 9)
+  //     .attr("dy", ".35em")
+  //     .style("text-anchor", "end")
+  //     .text(function(d) { return d;})
 };
 
 Scatter.prototype.updateVis = function() {
