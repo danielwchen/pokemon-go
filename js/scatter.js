@@ -86,7 +86,7 @@ Scatter.prototype.createVis = function() {
   vis.x = d3.scaleLinear().range([0, vis.width]);
   vis.y = d3.scaleLinear().range([vis.height, 0]);
   vis.c = d3.scaleOrdinal().range(vis.colors)
-  .domain(["Fire", "Water", "Electric","Grass","Ice","Fighting","Poison","Ground",
+  .domain(["Normal","Fire", "Water", "Electric","Grass","Ice","Fighting","Poison","Ground",
     "Flying","Psychic","Bug","Rock","Ghost","Dragon","Dark","Steel","Fairy"]);
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
