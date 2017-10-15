@@ -203,7 +203,7 @@ form {
 
 .graph-scroll-fixed #graph{
   position: fixed;
-  top: 0px;
+  /*top: 0px;*/
 }
 
 .graph-scroll-below #graph{

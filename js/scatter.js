@@ -271,18 +271,11 @@ Scatter.prototype.resize = function(w, h) {
   .attr("y", 6)
   .attr("dy", ".71em");
 
-
-  // vis.legend.selectAll("rect")
+  // vis.legend_rect
   // .attr("x", vis.width + 36);
 
-  // vis.legend.selectAll("text")
+  // vis.legend_text
   // .attr("x", vis.width + 28);
-
-  vis.legend_rect
-  .attr("x", vis.width + 36);
-
-  vis.legend_text
-  .attr("x", vis.width + 28);
 
 
 
@@ -385,20 +378,6 @@ Scatter.prototype.pinType = function(type) {
 Scatter.prototype.initLegend = function() {
   var vis = this;
 
-
-  this.c_range = {type:['#A8A77A','#EE8130','#6390F0','#F7D02C','#7AC74C',
-                        '#96D9D6','#C22E28','#A33EA1','#E2BF65','#A98FF3',
-                        '#F95587','#A6B91A','#B6A136','#735797','#6F35FC',
-                        '#705746','#B7B7CE','#D685AD'],
-                  evol:['#F7D02C','#A6B91A','#C22E28','#6F35FC'],
-                  lege:['#B7B7CE','#F95587']};
-  this.c_domain = {type:["Normal","Fire", "Water", "Electric","Grass",
-                         "Ice","Fighting","Poison","Ground","Flying",
-                         "Psychic","Bug","Rock","Ghost","Dragon",
-                         "Dark","Steel","Fairy"],
-                   evol:["First", "Second","Third","Legendary"],
-                   lege:["Nonlegendary","Legendary"] }
-
   vis.legend_rect1 = vis.svg.selectAll(".legend-rect1")
   .data(vis.c_domain.type)
   .enter().append("rect")
@@ -482,4 +461,26 @@ Scatter.prototype.initLegend = function() {
   .attr("dy", ".35em")
   .style("text-anchor", "end")
   .text(function(d) { return d;});
+}
+
+Scatter.prototype.updateLegend = function(stat) {
+  var vis = this;
+
+  vis.legend_rect1
+  .attr("x", vis.width + 36);
+
+  vis.legend_text1 
+  .attr("x", vis.width + 28);
+
+  vis.legend_rect2 
+  .attr("x", vis.width + 36);
+
+  vis.legend_text2
+  .attr("x", vis.width + 28);
+
+  vis.legend_rect3
+  .attr("x", vis.width + 36);
+
+  vis.legend_text3
+  .attr("x", vis.width + 28);
 }
