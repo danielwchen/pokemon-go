@@ -1,4 +1,4 @@
-id,name,type1,type2,evolution,legendary,attack,defense,health,cp,healthrank,attackrank,defenserank,cprank,img,none
+id,name,type1,type2,evol,lege,attack,defense,health,cp,healthrank,attackrank,defenserank,cprank,img,none
 1,Bulbasaur,Grass,Poison,First,Nonlegendary,118,118,90,981,52,67,80,60,001.png,0
 2,Ivysaur,Grass,Poison,Second,Nonlegendary,151,151,120,1552,109,120,129,120,002.png,0
 3,Venusaur,Grass,Poison,Third,Nonlegendary,198,198,160,2568,185,197,206,211,003.png,0
