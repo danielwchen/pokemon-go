@@ -145,7 +145,7 @@ Scatter.prototype.createVis = function() {
 
   vis.updateVis();
 
-  vis.legend = 
+  // vis.legend = 
 };
 
 Scatter.prototype.updateVis = function() {
