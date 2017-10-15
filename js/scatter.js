@@ -106,9 +106,6 @@ Scatter.prototype.createVis = function() {
   vis.yAxis = vis.svg.append("g")
   .call(d3.axisLeft(vis.y).tickSizeInner(-vis.height));
 
-  vis.xAxis;
-  vis.yAxis;
-
 
   vis.xLabel = vis.svg
   .append("text")
@@ -185,11 +182,18 @@ Scatter.prototype.updateVis = function() {
     return d[vis.y_stat]; 
   })]);
 
+  // vis.xAxis
+  // .call(d3.axisBottom(vis.x));
+
+  // vis.yAxis
+  // .call(d3.axisLeft(vis.y));
+
   vis.xAxis
-  .call(d3.axisBottom(vis.x));
+  // .attr("transform", "translate(0," + vis.height + ")")
+  .call(d3.axisBottom(vis.x).tickSizeInner(-vis.width));
 
   vis.yAxis
-  .call(d3.axisLeft(vis.y));
+  .call(d3.axisLeft(vis.y).tickSizeInner(-vis.height));
 
   vis.xLabel
   .text(vis.x_stat);
