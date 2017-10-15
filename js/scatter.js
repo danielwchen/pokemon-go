@@ -187,18 +187,11 @@ Scatter.prototype.updateVis = function() {
     return d[vis.y_stat]; 
   })]);
 
-  // vis.xAxis
-  // .call(d3.axisBottom(vis.x));
-
-  // vis.yAxis
-  // .call(d3.axisLeft(vis.y));
-
   vis.xAxis
-  // .attr("transform", "translate(0," + vis.height + ")")
-  .call(d3.axisBottom(vis.x).tickSizeInner(-vis.width));
+  .call(d3.axisBottom(vis.x).tickSizeInner(-vis.width).tickPadding(10));
 
   vis.yAxis
-  .call(d3.axisLeft(vis.y).tickSizeInner(-vis.height));
+  .call(d3.axisLeft(vis.y).tickSizeInner(-vis.height).tickPadding(10));
 
   vis.xLabel
   .text(vis.x_stat);
