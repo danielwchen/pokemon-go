@@ -197,17 +197,33 @@ Scatter.prototype.resize = function(winHeight) {
 Scatter.prototype.setX = function(stat) {
   var vis = this;
 
-  
-
   vis.x_stat = stat;
 
+  updateVisualization();
 }
 
 Scatter.prototype.setY = function(stat) {
   var vis = this;
 
+  vis.y_stat = stat;
+
+  updateVisualization();
+}
+
+Scatter.prototype.setSize = function(stat) {
+  var vis = this;
+
   vis.y_stat;
 
+  updateVisualization();
+}
+
+Scatter.prototype.setShape = function(stat) {
+  var vis = this;
+
+  vis.y_stat;
+
+  updateVisualization();
 }
 
 Scatter.prototype.getColor = function(type) {
@@ -284,7 +300,6 @@ d3.select("#x-form")
 
     vis.setX(d3.select("#x-form").property("value"))
 
-    updateVisualization();
   });
 
 d3.select("#y-form")
@@ -292,7 +307,6 @@ d3.select("#y-form")
 
     vis.setY(d3.select("#x-form").property("value"))
 
-    updateVisualization();
   });
 
 d3.select("#size-form")
