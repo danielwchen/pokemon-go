@@ -210,7 +210,8 @@ Scatter.prototype.updateVis = function() {
       else { return vis.c(d.type1); }
     } else {
       return vis.c(d[vis.c_stat])
-    })
+    }
+  })
   .attr("cx", function(d) { return vis.x(d[vis.x_stat]); })
   .attr("cy", function(d) { return vis.y(d[vis.y_stat]); })
 
