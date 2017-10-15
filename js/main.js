@@ -28,7 +28,7 @@ var scatter;
 
 checkWinStat();
 
-scatterStatic = new Scatter("#vis", x, y);
+scatterStatic = new Scatter("#bg-vis", x, y);
 scatter = new Scatter("#vis", x, y);
 
 d3.graphScroll()
@@ -64,34 +64,58 @@ function updateScatter (ind) {
     scatterStatic.pin(['Onix', 'Cloyster']);
     scatterStatic.pinType();
   } else if (ind == 2) {
-    scatterStatic.setX('attack');
+    scatterStatic.setX('health');
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
     scatterStatic.pin(['Onix', 'Cloyster', 'Chansey']);
     scatterStatic.pinType();
   } else if (ind == 3) {
-    scatterStatic.setX('attack');
+    scatterStatic.setX('health');
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
     scatterStatic.pin(['Cloyster', 'Chansey', 'Snorlax', 'Wigglytuff', 'Vaporeon']);
     scatterStatic.pinType();
   } else if (ind == 4) {
-    scatterStatic.setX('attack');
-    scatterStatic.setY('defense');
+    scatterStatic.setX('health');
+    scatterStatic.setY('attack');
     scatterStatic.setC('type');
     scatterStatic.pin(['Mewtwo', 'Magikarp']);
     scatterStatic.pinType();
-  } else if (ind == 3) {
-    scatterStatic.setX('attack');
-    scatterStatic.setY('defense');
+  } else if (ind == 5) {
+    scatterStatic.setX('health');
+    scatterStatic.setY('attack');
     scatterStatic.setC('type');
-    scatterStatic.pin(['Cloyster', 'Chansey', 'Snorlax', 'Wigglytuff', 'Vaporeon']);
+    scatterStatic.pin(['Mewtwo', 'Magikarp', 'Gyarados']);
     scatterStatic.pinType();
-  } else if (ind == 3) {
+  } else if (ind == 6) {
+    scatterStatic.setX('CP');
+    scatterStatic.setY('attack');
+    scatterStatic.setC('type');
+    scatterStatic.pin(['Mewtwo', 'Magikarp']);
+    scatterStatic.pinType();
+  } else if (ind == 7) {
+    scatterStatic.setX('CP');
+    scatterStatic.setY('attack');
+    scatterStatic.setC('type');
+    scatterStatic.pin();
+    scatterStatic.pinType();
+  } else if (ind == 8) {
     scatterStatic.setX('attack');
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
-    scatterStatic.pin(['Cloyster', 'Chansey', 'Snorlax', 'Wigglytuff', 'Vaporeon']);
+    scatterStatic.pin();
+    scatterStatic.pinType();
+  } else if (ind == 9) {
+    scatterStatic.setX('attack');
+    scatterStatic.setY('defense');
+    scatterStatic.setC('type');
+    scatterStatic.pin();
+    scatterStatic.pinType('Bug');
+  } else if (ind == 6) {
+    scatterStatic.setX('CP');
+    scatterStatic.setY('attack');
+    scatterStatic.setC('type');
+    scatterStatic.pin(['Mewtwo', 'Magikarp']);
     scatterStatic.pinType();
   } else {
     scatterStatic.setX('attack');
