@@ -323,10 +323,13 @@ Scatter.prototype.setC = function(stat) {
 Scatter.prototype.pin = function(pokemon) {
   var vis = this;
 
+  console.log("check");
+
   if (pokemon) {
     vis.dots.transition().duration(80)
     .attr("stroke-opacity",function(d) {
       if(pokemon.includes(d.name)) {
+        console.log("yes");
         return .8;
       } else {
         return .1;
