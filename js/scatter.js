@@ -258,6 +258,17 @@ Scatter.prototype.resize = function(w, h) {
   //   return "translate(-10," + (vis.height / 2) + ")rotate(270)";
   // });
 
+  
+
+  // draw legend colored rectangles
+  vis.legend.selectAll("rect")
+  // .attr("class", "legend-rect")
+  .attr("x", vis.width - 18);
+
+  // draw legend text
+  vis.legend.selectAll("text")
+  .attr("x", vis.width - 24);
+
   vis.updateVis();
 
 }
