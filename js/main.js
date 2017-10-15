@@ -60,41 +60,41 @@ function updateScatter (ind) {
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
     scatterStatic.pin();
-    scatterStatic.pinType();
+    // scatterStatic.pinType();
   } else if (ind == 1) {
-    scatterStatic.setX('attack');
-    scatterStatic.setY('defense');
-    scatterStatic.setC('type');
+    // scatterStatic.setX('attack');
+    // scatterStatic.setY('defense');
+    // scatterStatic.setC('type');
     scatterStatic.pin(['Onix', 'Cloyster']);
-    scatterStatic.pinType();
+    // scatterStatic.pinType();
   } else if (ind == 2) {
-    scatterStatic.setX('health');
-    scatterStatic.setY('defense');
-    scatterStatic.setC('type');
+    // scatterStatic.setX('health');
+    // scatterStatic.setY('defense');
+    // scatterStatic.setC('type');
     scatterStatic.pin(['Onix', 'Cloyster', 'Chansey']);
-    scatterStatic.pinType();
+    // scatterStatic.pinType();
   } else if (ind == 3) {
-    scatterStatic.setX('health');
-    scatterStatic.setY('defense');
-    scatterStatic.setC('type');
+    // scatterStatic.setX('health');
+    // scatterStatic.setY('defense');
+    // scatterStatic.setC('type');
     scatterStatic.pin(['Cloyster', 'Chansey', 'Snorlax', 'Wigglytuff', 'Vaporeon']);
-    scatterStatic.pinType();
+    // scatterStatic.pinType();
   } else if (ind == 4) {
-    scatterStatic.setX('health');
-    scatterStatic.setY('attack');
-    scatterStatic.setC('type');
+    // scatterStatic.setX('health');
+    // scatterStatic.setY('attack');
+    // scatterStatic.setC('type');
     scatterStatic.pin(['Mewtwo', 'Magikarp']);
-    scatterStatic.pinType();
+    // scatterStatic.pinType();
   } else if (ind == 5) {
-    scatterStatic.setX('health');
-    scatterStatic.setY('attack');
-    scatterStatic.setC('type');
+    // scatterStatic.setX('health');
+    // scatterStatic.setY('attack');
+    // scatterStatic.setC('type');
     scatterStatic.pin(['Mewtwo', 'Magikarp', 'Gyarados']);
     // scatterStatic.pinType();
   } else if (ind == 6) {
-    scatterStatic.setX('cp'); //cp
-    scatterStatic.setY('attack');
-    scatterStatic.setC('type');
+    // scatterStatic.setX('cp'); //cp
+    // scatterStatic.setY('attack');
+    // scatterStatic.setC('type');
     scatterStatic.pin(['Mewtwo', 'Magikarp']);
     // scatterStatic.pinType();
   } else if (ind == 7) {
@@ -128,26 +128,26 @@ function updateScatter (ind) {
     // scatterStatic.pin();
     scatterStatic.pinType('Normal');
   } else if (ind == 12) {
-    scatterStatic.setX('attack');
-    scatterStatic.setY('defense');
+    scatterStatic.setX('id');
+    scatterStatic.setY('cp');
     scatterStatic.setC('evol');
     scatterStatic.pin();
     // scatterStatic.pinType();
   } else if (ind == 13) {
-    scatterStatic.setX('attack');
-    scatterStatic.setY('defense');
+    scatterStatic.setX('id');
+    scatterStatic.setY('cp');
     scatterStatic.setC('evol');
     scatterStatic.pin(['Metapod', 'Kakuna']);
     // scatterStatic.pinType();
   } else if (ind == 14) {
-    scatterStatic.setX('attack');
+    scatterStatic.setX('id');
     scatterStatic.setY('defense');
     scatterStatic.setC('evol');
     scatterStatic.pin(['Onix', 'Cloyster']);
     // scatterStatic.pinType();
   } else {
-    scatterStatic.setX('attack');
-    scatterStatic.setY('defense');
+    scatterStatic.setX('id');
+    scatterStatic.setY('cp');
     scatterStatic.setC('type');
     scatterStatic.pin();
     // scatterStatic.pinType();
