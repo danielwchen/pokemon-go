@@ -20,7 +20,7 @@ function checkWinStat() {
 
 $( window ).resize(function() {
   checkWinStat();
-  scatter.resize(y);
+  scatter.resize(x, y);
 });
 
 var scatter;
@@ -28,7 +28,7 @@ var scatter;
 checkWinStat();
 
 
-scatter = new Scatter("#vis", y);
+scatter = new Scatter("#vis", x, y);
 
 
 d3.graphScroll()

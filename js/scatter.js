@@ -4,9 +4,10 @@
  *  @param _eventHandler    -- Event handler
  */
 
- Scatter = function(_parentElement, _winHeight) {
+ Scatter = function(_parentElement, _winWidth, _winHeight) {
 
   this.parentElement = _parentElement;
+  this.winWidth = _winWidth;
   this.winHeight = _winHeight;
 
   this.fin_data;
@@ -61,8 +62,8 @@ Scatter.prototype.createVis = function() {
   var vis = this;
 
   // set the dimensions and margins of the graph
-  vis.margin = {top: 20, right: 20, bottom: 100, left: 100};
-  vis.width = $(vis.parentElement).width() - vis.margin.left - vis.margin.right;
+  vis.margin = {top: 40, right: 40, bottom: 100, left: 100};
+  vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
   vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
   vis.svg = d3.select(vis.parentElement).append("svg")
@@ -162,7 +163,7 @@ Scatter.prototype.createVis = function() {
 
   // draw legend colored rectangles
   vis.legend.append("rect")
-  .attr("class", "legend-rect")
+  // .attr("class", "legend-rect")
   .attr("x", width - 18)
   .attr("width", 18)
   .attr("height", 18)
@@ -214,19 +215,20 @@ Scatter.prototype.updateVis = function() {
   vis.yLabel
   .text(vis.y_stat);
 
-  vis.dots.transition().duration(200)
+  vis.dots.transition().duration(500)
   .attr("cx", function(d) { return vis.x(d[vis.x_stat]); })
   .attr("cy", function(d) { return vis.y(d[vis.y_stat]); })
 
 
 }
 
-Scatter.prototype.resize = function(winHeight) {
+Scatter.prototype.resize = function(w, h) {
   var vis = this;
 
-  vis.winHeight = winHeight;
+  vis.winWidth = w;
+  vis.winHeight = h;
 
-  vis.width = $(vis.parentElement).width() - vis.margin.left - vis.margin.right;
+  vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
   vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
   vis.svg
@@ -289,48 +291,4 @@ Scatter.prototype.setShape = function(stat) {
   vis.shape_stat = stat;
 
   vis.updateVis();
-}
-
-Scatter.prototype.getColor = function(type) {
-  var vis = this;
-
-  if (type == "Normal") {
-    return vis.colors[0];
-  } else if (type == "Fire") {
-    return vis.colors[1];
-  } else if (type == "Water") {
-    return vis.colors[2];
-  } else if (type == "Electric") {
-    return vis.colors[3];
-  } else if (type == "Grass") {
-    return vis.colors[4];
-  } else if (type == "Ice") {
-    return vis.colors[5];
-  } else if (type == "Fighting") {
-    return vis.colors[6];
-  } else if (type == "Poison") {
-    return vis.colors[7];
-  } else if (type == "Ground") {
-    return vis.colors[8];
-  } else if (type == "Flying") {
-    return vis.colors[9];
-  } else if (type == "Psychic") {
-    return vis.colors[10];
-  } else if (type == "Bug") {
-    return vis.colors[11];
-  } else if (type == "Rock") {
-    return vis.colors[12];
-  } else if (type == "Ghost") {
-    return vis.colors[13];
-  } else if (type == "Dragon") {
-    return vis.colors[14];
-  } else if (type == "Dark") {
-    return vis.colors[15];
-  } else if (type == "Steel") {
-    return vis.colors[16];
-  } else if (type == "Fairy") {
-    return vis.colors[17];
-  } else {
-    return "black";
-  }
 }
