@@ -15,6 +15,10 @@
   this.y_labels;
   this.opacities;
 
+  this.x_stat = 'attack';
+  this.y_stat = 'cp';
+  this.c_stat = 'type';
+
   // Type colors from http://www.epidemicjohto.com/t882-type-colors-hex-colors
   this.c_range = {type:['#A8A77A','#EE8130','#6390F0','#F7D02C','#7AC74C',
   '#96D9D6','#C22E28','#A33EA1','#E2BF65','#A98FF3',
@@ -90,15 +94,15 @@ Scatter.prototype.createVis = function() {
   vis.x = d3.scaleLinear().range([0, vis.width]);
   vis.y = d3.scaleLinear().range([vis.height, 0]);
   vis.c = d3.scaleOrdinal()
-            .range(vis.c_range.type)
-            .domain(vis.c_domain.type);
+            .range(vis.c_range[vis.c_stat])
+            .domain(vis.c_domain[vis.c_stat]);
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d['attack'];
+    return d[vis.x_stat];
   })]);
 
   vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d['cp'];
+    return d[vis.y_stat];
   })]);
 
   vis.xAxis = vis.svg.append("g")
@@ -189,6 +193,20 @@ Scatter.prototype.updateVis = function() {
   .text(vis.y_stat);
 
   vis.dots.transition().duration(500)
+  .attr("stroke", function(d) { 
+    if (vis.c_stat == 'type') {
+      return vis.c(d.type1); 
+    } else {
+      return vis.c(d[vis.c_stat])
+    }
+  })
+  .attr("fill", function(d) {
+    if (vis.c_stat == 'type') {
+      if (d.type2) { return vis.c(d.type2); } 
+      else { return vis.c(d.type1); }
+    } else {
+      return vis.c(d[vis.c_stat])
+    })
   .attr("cx", function(d) { return vis.x(d[vis.x_stat]); })
   .attr("cy", function(d) { return vis.y(d[vis.y_stat]); })
 
@@ -236,8 +254,10 @@ Scatter.prototype.resize = function(w, h) {
 Scatter.prototype.setX = function(stat) {
   var vis = this;
 
+  vis.x_stat = stat;
+
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[stat]; 
+    return d[vis.x_stat]; 
   })]);
 
 
@@ -247,8 +267,10 @@ Scatter.prototype.setX = function(stat) {
 Scatter.prototype.setY = function(stat) {
   var vis = this;
 
+  vis.y_stat = stat;
+
   vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[stat]; 
+    return d[vis.y_stat]; 
   })]);
 
   vis.updateVis();
@@ -257,10 +279,11 @@ Scatter.prototype.setY = function(stat) {
 Scatter.prototype.setC = function(stat) {
   var vis = this;
 
-  
+  vis.c_stat = stat;
+
   vis.c = d3.scaleOrdinal()
-            .range(vis.c_range[stat])
-            .domain(vis.c_domain[stat]);
+            .range(vis.c_range[vis.c_stat])
+            .domain(vis.c_domain[vis.c_stat]);
 
   vis.updateVis();
 }
