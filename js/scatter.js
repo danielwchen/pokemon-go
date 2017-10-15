@@ -144,11 +144,18 @@ Scatter.prototype.createVis = function() {
   });
 
   vis.updateVis();
+
+  vis.legend = 
 };
 
 Scatter.prototype.updateVis = function() {
   var vis = this;
 
+  vis.xAxis
+  .call(d3.axisBottom(vis.x));
+
+  vis.yAxis
+  .call(d3.axisLeft(vis.y));
 
   vis.xLabel
   .text(vis.x_stat);
@@ -182,10 +189,10 @@ Scatter.prototype.resize = function(winHeight) {
 
   vis.xAxis
   .attr("transform", "translate(0," + vis.height + ")")
-  .call(d3.axisBottom(vis.x));
+  // .call(d3.axisBottom(vis.x));
 
-  vis.yAxis
-  .call(d3.axisLeft(vis.y));
+  // vis.yAxis
+  // .call(d3.axisLeft(vis.y));
 
   vis.xLabel
   .attr("transform", function(d,i) {
