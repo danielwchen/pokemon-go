@@ -25,7 +25,7 @@
                         '#F95587','#A6B91A','#B6A136','#735797','#6F35FC',
                         '#705746','#B7B7CE','#D685AD'],
                   evol:['#F7D02C','#A6B91A','#C22E28','#6F35FC'],
-                  lege:['#B7B7CE','#D685AD']};
+                  lege:['#B7B7CE','#F95587']};
   this.c_domain = {type:["Normal","Fire", "Water", "Electric","Grass",
                          "Ice","Fighting","Poison","Ground","Flying",
                          "Psychic","Bug","Rock","Ghost","Dragon",
@@ -73,7 +73,7 @@ Scatter.prototype.createVis = function() {
   // set the dimensions and margins of the graph
   vis.margin = {top: 40, right: 80, bottom: 40, left: 40};
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
-  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom - 30;
+  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
   vis.svgparent = d3.select(vis.parentElement).append("svg")
   .attr("width", vis.width + vis.margin.left + vis.margin.right)
@@ -104,11 +104,11 @@ Scatter.prototype.createVis = function() {
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
     return d[vis.x_stat];
-  }) + 100]);
+  })+20]);
 
   vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
     return d[vis.y_stat];
-  }) + 100]);
+  })+20]);
 
   vis.xAxis = vis.svg.append("g")
   .attr("transform", "translate(0," + vis.height + ")")
@@ -141,7 +141,7 @@ Scatter.prototype.createVis = function() {
   .attr("class", "legend")
   .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 15) + ")"; });
 
-  vis.legend.append("rect")
+  vis.legend_rect = vis.legend.append("rect")
   .attr("class", "legend-rect")
   .attr("x", vis.width + 36)
   .attr("width", 18)
@@ -152,14 +152,12 @@ Scatter.prototype.createVis = function() {
   .style("stroke", vis.c)
   .attr("stroke-width", 3);
 
-  vis.legend.append("text")
+  vis.legend_text = vis.legend.append("text")
   .attr("x", vis.width + 28)
   .attr("y", 9)
   .attr("dy", ".35em")
   .style("text-anchor", "end")
   .text(function(d) { return d;});
-
-  vis.legend.exit().remove();
 
   vis.dots = vis.svg.selectAll(".dots")
   .data(vis.fin_data)
@@ -199,7 +197,10 @@ Scatter.prototype.updateVis = function() {
   vis.yLabel
   .text(vis.y_stat);
 
-  vis.legend.enter()
+   var text = g.selectAll("text")
+    .data(data);
+
+  vis.legend_rect.enter()
   .attr("class", "legend-rect")
   .attr("x", vis.width + 36)
   .attr("width", 18)
@@ -210,14 +211,15 @@ Scatter.prototype.updateVis = function() {
   .style("stroke", vis.c)
   .attr("stroke-width", 3);
 
-  vis.legend.append("text")
+  vis.legend_text.append("text")
   .attr("x", vis.width + 28)
   .attr("y", 9)
   .attr("dy", ".35em")
   .style("text-anchor", "end")
   .text(function(d) { return d;});
 
-  vis.legend.exit().remove();
+  vis.legend_rect.exit().remove();
+  vis.legend_text.exit().remove();
 
   vis.dots.transition().duration(500)
   .attr("stroke", function(d) { 
@@ -248,7 +250,7 @@ Scatter.prototype.resize = function(w, h) {
   vis.winHeight = h;
 
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
-  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom - 30;
+  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
   vis.svgparent
   .attr("width", vis.width + vis.margin.left + vis.margin.right)
@@ -286,7 +288,7 @@ Scatter.prototype.setX = function(stat) {
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
     return d[vis.x_stat]; 
-  })+100]);
+  })+20]);
 
 
   vis.updateVis();
@@ -299,7 +301,7 @@ Scatter.prototype.setY = function(stat) {
 
   vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
     return d[vis.y_stat]; 
-  })+100]);
+  })+20]);
 
   vis.updateVis();
 }
