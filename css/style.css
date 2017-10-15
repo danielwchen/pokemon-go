@@ -114,28 +114,11 @@ h1{
   font-family: Georgia;
 }
 
-#sections > div:last-child{
-  margin-bottom: 100px;
-}
-#sections > div.graph-scroll-active{
-}
-
 #graph{
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0px;
-
-}
-
-.graph-scroll-fixed #graph{
-  position: fixed;
-  top: 0px;
-}
-
-.graph-scroll-below #graph{
-  bottom: 0px;
-  top: auto;
 }
 */
 
