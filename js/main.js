@@ -2,7 +2,7 @@
  * Created by Daniel on 10/10/17.
  */
 
-console.log("updated14")
+console.log("updated15")
 
  var w = window,
  d = document,
@@ -35,8 +35,8 @@ d3.graphScroll()
 .graph(d3.selectAll('#graph'))
 .container(d3.select('#container'))
 .sections(d3.selectAll('#sections > div'))
-.on('active', function(i){ 
-  console.log(i);
+.on('active', function(i){
+  console.log(i + 'th section active');
   updateScatter(i);
 })
 
