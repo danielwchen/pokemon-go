@@ -71,9 +71,9 @@ Scatter.prototype.createVis = function() {
   var vis = this;
 
   // set the dimensions and margins of the graph
-  vis.margin = {top: 40, right: 80, bottom: 20, left: 40};
+  vis.margin = {top: 20, right: 80, bottom: 20, left: 40};
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
-  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
+  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom - 40;
 
   vis.svgparent = d3.select(vis.parentElement).append("svg")
   .attr("width", vis.width + vis.margin.left + vis.margin.right)
@@ -251,7 +251,7 @@ Scatter.prototype.resize = function(w, h) {
   vis.winHeight = h;
 
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
-  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
+  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom - 40;
 
   vis.svgparent
   .attr("width", vis.width + vis.margin.left + vis.margin.right)
@@ -385,10 +385,22 @@ Scatter.prototype.pinType = function(type) {
 Scatter.prototype.initLegend = function() {
   var vis = this;
 
-  
+
+  this.c_range = {type:['#A8A77A','#EE8130','#6390F0','#F7D02C','#7AC74C',
+                        '#96D9D6','#C22E28','#A33EA1','#E2BF65','#A98FF3',
+                        '#F95587','#A6B91A','#B6A136','#735797','#6F35FC',
+                        '#705746','#B7B7CE','#D685AD'],
+                  evol:['#F7D02C','#A6B91A','#C22E28','#6F35FC'],
+                  lege:['#B7B7CE','#F95587']};
+  this.c_domain = {type:["Normal","Fire", "Water", "Electric","Grass",
+                         "Ice","Fighting","Poison","Ground","Flying",
+                         "Psychic","Bug","Rock","Ghost","Dragon",
+                         "Dark","Steel","Fairy"],
+                   evol:["First", "Second","Third","Legendary"],
+                   lege:["Nonlegendary","Legendary"] }
 
   vis.legend_rect1 = vis.svg.selectAll(".legend-rect1")
-  .data(vis.c.domain())
+  .data(vis.c_domain.type)
   .enter().append("rect")
   .attr("class", "legend-rect1")
   .attr("x", vis.width + 36)
@@ -397,12 +409,16 @@ Scatter.prototype.initLegend = function() {
   .attr("height", 18)
   .attr("stroke-opacity", .6)
   .attr("fill-opacity", .2)
-  .style("fill", vis.c)
-  .style("stroke", vis.c)
+  .style("fill", function(d,i) {
+    return vis.c_range.type[i];
+  })
+  .style("stroke", function(d,i) {
+    return vis.c_range.type[i];
+  })
   .attr("stroke-width", 3);
 
   vis.legend_text1 = vis.svg.selectAll(".legend-text1")
-  .data(vis.c.domain())
+  .data(vis.c_domain.type)
   .enter().append("text")
   .attr("class", "legend-text1")
   .attr("x", vis.width + 28)
@@ -412,23 +428,27 @@ Scatter.prototype.initLegend = function() {
   .text(function(d) { return d;});
 
   vis.legend_rect2 = vis.svg.selectAll(".legend-rect2")
-  .data(vis.c.domain())
+  .data(vis.c_domain.evol)
   .enter().append("rect")
-  .attr("class", "legend-rect1")
+  .attr("class", "legend-rect2")
   .attr("x", vis.width + 36)
   .attr("y", function(d,i) { return i*20+15; })
   .attr("width", 18)
   .attr("height", 18)
   .attr("stroke-opacity", .6)
   .attr("fill-opacity", .2)
-  .style("fill", vis.c)
-  .style("stroke", vis.c)
+  .style("fill", function(d,i) {
+    return vis.c_range.evol[i];
+  })
+  .style("stroke", function(d,i) {
+    return vis.c_range.evol[i];
+  })
   .attr("stroke-width", 3);
 
   vis.legend_text2 = vis.svg.selectAll(".legend-text2")
-  .data(vis.c.domain())
+  .data(vis.c_domain.evol)
   .enter().append("text")
-  .attr("class", "legend-text1")
+  .attr("class", "legend-text2")
   .attr("x", vis.width + 28)
   .attr("y", function(d,i) {return i*20+15+9; })
   .attr("dy", ".35em")
@@ -436,7 +456,7 @@ Scatter.prototype.initLegend = function() {
   .text(function(d) { return d;});
 
   vis.legend_rect3 = vis.svg.selectAll(".legend-rect3")
-  .data(vis.c.domain())
+  .data(vis.c_domain.lege)
   .enter().append("rect")
   .attr("class", "legend-rect3")
   .attr("x", vis.width + 36)
@@ -445,12 +465,16 @@ Scatter.prototype.initLegend = function() {
   .attr("height", 18)
   .attr("stroke-opacity", .6)
   .attr("fill-opacity", .2)
-  .style("fill", vis.c)
-  .style("stroke", vis.c)
+  .style("fill", function(d,i) {
+    return vis.c_range.lege[i];
+  })
+  .style("stroke", function(d,i) {
+    return vis.c_range.lege[i];
+  })
   .attr("stroke-width", 3);
 
   vis.legend_text3 = vis.svg.selectAll(".legend-text3")
-  .data(vis.c.domain())
+  .data(vis.c_domain.lege)
   .enter().append("text")
   .attr("class", "legend-text3")
   .attr("x", vis.width + 28)
