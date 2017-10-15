@@ -152,11 +152,15 @@ body{
   stroke-opacity: 1;
 }
 
-.legend-rect:hover {
+.legend:hover {
   fill-opacity: .4;
   stroke-opacity: 1;
 };
 
 .label {
+  font: 11px sans-serif;
+}
+
+.legend {
   font: 11px sans-serif;
 }

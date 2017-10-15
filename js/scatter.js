@@ -149,7 +149,7 @@ Scatter.prototype.createVis = function() {
   .data(vis.c.domain())
   .enter().append("g")
   .attr("class", "legend")
-  .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 50) + ")"; });
+  .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 30) + ")"; });
 
   vis.legend.append("rect")
   // .attr("class", "legend-rect")
