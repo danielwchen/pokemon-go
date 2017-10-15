@@ -23,7 +23,7 @@ body {
 }
 .interlude {
   width: 80%;
-  margin: 0 auto;
+  margin: 50px auto 50px auto;
   color: white;
   text-align: center;
 }
@@ -33,7 +33,7 @@ label {
 }
 
 h1{
-  margin: 50px;
+  margin: 50px auto 0px auto;
   text-align: center;
   font-family: Generica;
   font-weight: bold;
@@ -81,10 +81,13 @@ h1{
 }
 
 
-
+a {
+  color: white;
+  text-decoration: underline;
+}
 
 #vis {
-  margin: 50px auto 10px auto;
+  margin: 10px auto 10px auto;
   background-color: white;
   border: 2px solid;
   border-color: #3c5aa6;
