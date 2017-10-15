@@ -2,7 +2,7 @@
  * Created by Daniel on 10/10/17.
  */
 
-console.log("updated13")
+console.log("updated14")
 
  var w = window,
  d = document,
@@ -36,6 +36,7 @@ d3.graphScroll()
 .container(d3.select('#container'))
 .sections(d3.selectAll('#sections > div'))
 .on('active', function(i){ 
+  console.log(i);
   updateScatter(i);
 })
 
@@ -111,15 +112,39 @@ function updateScatter (ind) {
     scatterStatic.setC('type');
     scatterStatic.pin();
     scatterStatic.pinType('Bug');
-  } else if (ind == 6) {
-    scatterStatic.setX('CP');
-    scatterStatic.setY('attack');
+  } else if (ind == 10) {
+    scatterStatic.setX('attack');
+    scatterStatic.setY('defense');
     scatterStatic.setC('type');
-    scatterStatic.pin(['Mewtwo', 'Magikarp']);
+    scatterStatic.pin();
+    scatterStatic.pinType('Dragon');
+  } else if (ind == 11) {
+    scatterStatic.setX('health');
+    scatterStatic.setY('defense');
+    scatterStatic.setC('type');
+    scatterStatic.pin();
+    scatterStatic.pinType('Normal');
+  } else if (ind == 12) {
+    scatterStatic.setX('attack');
+    scatterStatic.setY('defense');
+    scatterStatic.setC('evol');
+    scatterStatic.pin();
+    scatterStatic.pinType();
+  } else if (ind == 13) {
+    scatterStatic.setX('attack');
+    scatterStatic.setY('defense');
+    scatterStatic.setC('evol');
+    scatterStatic.pin(['Metapod', 'Kakuna']);
+    scatterStatic.pinType();
+  } else if (ind == 14) {
+    scatterStatic.setX('attack');
+    scatterStatic.setY('defense');
+    scatterStatic.setC('evol');
+    scatterStatic.pin(['Onix', 'Cloyster']);
     scatterStatic.pinType();
   } else {
     scatterStatic.setX('attack');
-    scatterStatic.setY('cp');
+    scatterStatic.setY('defense');
     scatterStatic.setC('type');
     scatterStatic.pin();
     scatterStatic.pinType();
