@@ -158,7 +158,7 @@ Scatter.prototype.createVis = function() {
 
   vis.legend.append("rect")
   .attr("class", "legend-rect")
-  .attr("x", vis.width + 18)
+  .attr("x", vis.width + 24)
   .attr("width", 18)
   .attr("height", 18)
   .attr("stroke-opacity", .6)
@@ -168,7 +168,7 @@ Scatter.prototype.createVis = function() {
   .attr("stroke-width", 3);
 
   vis.legend.append("text")
-  .attr("x", vis.width)
+  .attr("x", vis.width + 12)
   .attr("y", 9)
   .attr("dy", ".35em")
   .style("text-anchor", "end")
