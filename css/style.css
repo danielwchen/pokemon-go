@@ -156,7 +156,6 @@ form {
   width: 80%;
   margin: 0px auto;
   padding-top: 30px;
-  padding-bottom: 30px;
 }
 
 #sections > div{
@@ -176,7 +175,7 @@ form {
 
 
 #sections > div:last-child{
-  margin-bottom: 100px;
+  margin-bottom: 600px;
 }
 #sections > div.graph-scroll-active{
 }
