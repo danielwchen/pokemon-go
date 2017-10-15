@@ -199,30 +199,6 @@ Scatter.prototype.updateVis = function() {
   vis.yLabel
   .text(vis.y_stat);
 
-  // vis.legend_rect.enter().append("rect")
-  // .attr("class", "legend-rect")
-  // .attr("x", vis.width + 36)
-  // .attr("y", function(d,i) { return i*20+15; })
-  // .attr("width", 18)
-  // .attr("height", 18)
-  // .attr("stroke-opacity", .6)
-  // .attr("fill-opacity", .2)
-  // .style("fill", vis.c)
-  // .style("stroke", vis.c)
-  // .attr("stroke-width", 3);
-
-  // vis.legend_rect.exit().remove();
-
-  // vis.legend_text.enter().append("text")
-  // .attr("class", "legend-text")
-  // .attr("x", vis.width + 28)
-  // .attr("y", function(d,i) {return i*20+15+9; })
-  // .attr("dy", ".35em")
-  // .style("text-anchor", "end")
-  // .text(function(d) { return d;});
-
-  // vis.legend_text.exit().remove();
-
 
   vis.dots.transition().duration(500)
   .attr("stroke", function(d) { 
@@ -329,6 +305,7 @@ Scatter.prototype.pin = function(pokemon) {
     vis.dots.transition().duration(80)
     .attr("stroke-opacity",function(d) {
       if(pokemon.includes(d.name)) {
+        console.log(d.name);
         return 0.8;
       } else {
         return 0.1;
@@ -355,7 +332,9 @@ Scatter.prototype.pinType = function(type) {
   if (type) {
     vis.dots.transition().duration(80)
     .attr("stroke-opacity",function(d) {
-      if(d.type1 == type || d.type2 == type) {
+      if(d.type1 == type) {
+        return 0.8;
+      } else if (d.type2 == type) {
         return 0.8;
       } else {
         return 0.1;
