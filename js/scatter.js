@@ -15,6 +15,9 @@
   this.y_labels;
   this.opacities;
 
+  this.x_stat;
+  this.y_stat;
+
   // Normal Type: A8A77A
   // Fire Type:  EE8130
   // Water Type:  6390F0
@@ -100,8 +103,16 @@ Scatter.prototype.createVis = function() {
   vis.x = d3.scaleLinear().range([0, vis.width]);
   vis.y = d3.scaleLinear().range([vis.height, 0]);
 
-  vis.setX(0);
-  vis.setY(0);
+  vis.setX('attack');
+  vis.setY('cp');
+
+  vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
+    return d[vis.x_stat]; 
+  })]);
+
+  vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
+    return d[vis.y_stat]; 
+  })]);
 
   // Add the X Axis
   vis.xAxis = vis.svg.append("g")
@@ -119,8 +130,8 @@ Scatter.prototype.createVis = function() {
   .enter().append("circle")
   .attr("class", "dots")
   .attr("r", 10)
-  .attr("cx", function(d) { return vis.x(d.cp); })
-  .attr("cy", function(d) { return vis.y(d.attack); })
+  .attr("cx", function(d) { return vis.x(d[vis.x_stat]); })
+  .attr("cy", function(d) { return vis.y(d[vis.y_stat]); })
   .attr("stroke-opacity", .8)
   .attr("fill-opacity", .4)
   .attr("stroke", function(d) {
@@ -147,9 +158,6 @@ Scatter.prototype.createVis = function() {
 
 Scatter.prototype.updateVis = function() {
   var vis = this;
-
-  vis.setX(0);
-  vis.setY(0);
 
   vis.dots.transition().duration(200)
   .attr("cx", function(d) { return vis.x(d.cp); })
@@ -189,18 +197,16 @@ Scatter.prototype.resize = function(winHeight) {
 Scatter.prototype.setX = function(stat) {
   var vis = this;
 
-  vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[stat]; 
-  })]);
+  
+
+  vis.x_stat = stat;
 
 }
 
 Scatter.prototype.setY = function(stat) {
   var vis = this;
 
-  vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[stat]; 
-  })]);
+  vis.y_stat;
 
 }
 
