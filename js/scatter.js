@@ -131,9 +131,7 @@ Scatter.prototype.createVis = function() {
   .data(vis.fin_data)
   .enter().append("circle")
   .attr("class", "dots")
-  // .attr("d", function(d) { return vis.s(d.legendary)})
   .attr("r", 10)
-  // .attr('transform', 'translate(' + vis.x(d[vis.x_stat]) + ',' + vis.y(d[vis.y_stat]) + ')')
   .attr("cx", function(d) { return vis.x(d[vis.x_stat]); })
   .attr("cy", function(d) { return vis.y(d[vis.y_stat]); })
   .attr("stroke-opacity", .7)
@@ -151,7 +149,7 @@ Scatter.prototype.createVis = function() {
   .data(vis.c.domain())
   .enter().append("g")
   .attr("class", "legend")
-  .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+  .attr("transform", function(d, i) { return "translate(450," + i * 20 + ")"; });
 
   vis.legend.append("rect")
   // .attr("class", "legend-rect")
