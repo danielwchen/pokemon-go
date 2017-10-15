@@ -320,7 +320,6 @@ Scatter.prototype.pin = function(pokemon) {
     })
     .attr("stroke-opacity",function(d) {
       if(pokemon.includes(d.name)) {
-        console.log(d.name);
         return 0.8;
       } else {
         return 0.1;
