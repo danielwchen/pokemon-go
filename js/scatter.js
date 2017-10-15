@@ -178,20 +178,20 @@ Scatter.prototype.resize = function(winHeight) {
 
 }
 
-Scatter.prototype.setX = function(ind) {
+Scatter.prototype.setX = function(stat) {
   var vis = this;
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d.cp; 
+    return d[stat]; 
   })]);
 
 }
 
-Scatter.prototype.setY = function(ind) {
+Scatter.prototype.setY = function(stat) {
   var vis = this;
 
   vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d.attack; 
+    return d[stat]; 
   })]);
 
 }
@@ -266,16 +266,18 @@ Scatter.prototype.getColor = function(type) {
 
 
 d3.select("#x-form")
-  .on("change", function(d) {
-    console.log(d);
+  .on("change", function() {
 
+    vis.setX(d3.select("#x-form").property("value"))
 
-
-    // updateVisualization();
+    updateVisualization();
   });
 
 d3.select("#y-form")
   .on("change", function() {
+
+    vis.setY(d3.select("#x-form").property("value"))
+
     updateVisualization();
   });
 
