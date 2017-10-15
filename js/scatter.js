@@ -62,7 +62,7 @@ Scatter.prototype.createVis = function() {
   var vis = this;
 
   // set the dimensions and margins of the graph
-  vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
+  vis.margin = {top: 20, right: 20, bottom: 20, left: 40};
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
   vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
@@ -91,11 +91,11 @@ Scatter.prototype.createVis = function() {
               "Flying","Psychic","Bug","Rock","Ghost","Dragon","Dark","Steel","Fairy"]);
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[vis.x_stat]; 
+    return d[vis.x_stat] + 15; 
   })]);
 
   vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[vis.y_stat]; 
+    return d[vis.y_stat] + 15; 
   })]);
 
   vis.xAxis = vis.svg.append("g")
@@ -120,12 +120,7 @@ Scatter.prototype.createVis = function() {
   .attr("y", 6)
   .attr("dy", ".71em")
   .style("text-anchor", "end")
-  // .attr("transform", function(d,i) {
-  //   return "translate(-10," + (vis.height / 2) + ")rotate(270)";
-  // })
   .text(vis.y_stat);
-
-
 
   vis.dots = vis.svg.selectAll(".dots")
   .data(vis.fin_data)
@@ -152,7 +147,6 @@ Scatter.prototype.createVis = function() {
   .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 30) + ")"; });
 
   vis.legend.append("rect")
-  // .attr("class", "legend-rect")
   .attr("x", vis.width - 18)
   .attr("width", 18)
   .attr("height", 18)
@@ -160,17 +154,16 @@ Scatter.prototype.createVis = function() {
   .attr("fill-opacity", .2)
   .style("fill", vis.c)
   .style("stroke", vis.c)
-  .attr("stroke-width", 3)
-  ;
+  .attr("stroke-width", 3);
 
   vis.legend.append("text")
   .attr("x", vis.width - 24)
   .attr("y", 9)
   .attr("dy", ".35em")
   .style("text-anchor", "end")
-  .text(function(d) { return d;})
+  .text(function(d) { return d;});
 
-  // vis.legend.exit().remove();
+  vis.legend.exit().remove();
 
   vis.updateVis();
 };
@@ -220,42 +213,26 @@ Scatter.prototype.resize = function(w, h) {
 
   vis.svg
   .attr("width", vis.width + vis.margin.left + vis.margin.right)
-  .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
-  .attr("transform",
-    "translate(" + vis.margin.left + "," + vis.margin.top + ")");
+  .attr("height", vis.height + vis.margin.top + vis.margin.bottom);
 
   vis.x.range([0, vis.width]);
   vis.y.range([vis.height, 0]);
 
   vis.xAxis
   .attr("transform", "translate(0," + vis.height + ")")
-  // .call(d3.axisBottom(vis.x));
-
-  // vis.yAxis
-  // .call(d3.axisLeft(vis.y));
 
   vis.xLabel
   .attr("x", vis.width)
   .attr("y", vis.height-6);
-  // .attr("transform", function(d,i) {
-  //   return "translate(" + (vis.width / 2) + "," + vis.height + ")";
-  // });
 
   vis.yLabel
   .attr("y", 6)
   .attr("dy", ".71em");
-  // .attr("transform", function(d,i) {
-  //   return "translate(-10," + (vis.height / 2) + ")rotate(270)";
-  // });
 
-  
 
-  // draw legend colored rectangles
   vis.legend.selectAll("rect")
-  // .attr("class", "legend-rect")
   .attr("x", vis.width - 18);
 
-  // draw legend text
   vis.legend.selectAll("text")
   .attr("x", vis.width - 24);
 
@@ -279,18 +256,10 @@ Scatter.prototype.setY = function(stat) {
   vis.updateVis();
 }
 
-Scatter.prototype.setSize = function(stat) {
+Scatter.prototype.setC = function(stat) {
   var vis = this;
 
-  vis.size_stat = stat;
-
-  vis.updateVis();
-}
-
-Scatter.prototype.setShape = function(stat) {
-  var vis = this;
-
-  vis.shape_stat = stat;
+  vis.c_stat = stat;
 
   vis.updateVis();
 }

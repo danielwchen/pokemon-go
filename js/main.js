@@ -38,23 +38,10 @@ d3.graphScroll()
 })
 
 d3.select("#x-form")
-  .on("change", function() {
-
-    scatter.setX(d3.select("#x-form").property("value"))
-
-  });
+.on("change", function() { scatter.setX(d3.select("#x-form").property("value")); });
 
 d3.select("#y-form")
-  .on("change", function() {
+.on("change", function() { scatter.setY(d3.select("#y-form").property("value")); });
 
-    scatter.setY(d3.select("#y-form").property("value"))
-
-  });
-
-d3.select("#size-form")
-  .on("change", function() {
-  });
-
-d3.select("#shape-form")
-  .on("change", function() {
-  });
+d3.select("#color-form")
+.on("change", function() { scatter.setC(d3.select("#c-form").property("value")) });
