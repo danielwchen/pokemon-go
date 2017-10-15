@@ -20,6 +20,7 @@ function checkWinStat() {
 
 $( window ).resize(function() {
   checkWinStat();
+  scatterStatic.resize(x, y);
   scatter.resize(x, y);
 });
 
@@ -27,6 +28,7 @@ var scatter;
 
 checkWinStat();
 
+scatterStatic = new Scatter("#vis", x, y);
 scatter = new Scatter("#vis", x, y);
 
 d3.graphScroll()
@@ -34,7 +36,7 @@ d3.graphScroll()
 .container(d3.select('#container'))
 .sections(d3.selectAll('#sections > div'))
 .on('active', function(i){ 
-  console.log(i + 'th section active');
+  updateScatter(i);
 })
 
 d3.select("#x-form")
@@ -44,4 +46,15 @@ d3.select("#y-form")
 .on("change", function() { scatter.setY(d3.select("#y-form").property("value")); });
 
 d3.select("#c-form")
-.on("change", function() { scatter.setC(d3.select("#c-form").property("value")) });
+.on("change", function() { scatter.setC(d3.select("#c-form").property("value")); });
+
+
+
+function updateScatter (ind) {
+  if (ind == 0) {
+    scatterStatic.setX('attack');
+    scatterStatic.setY('defense');
+    scatterStatic.setC('type');
+
+  }
+}

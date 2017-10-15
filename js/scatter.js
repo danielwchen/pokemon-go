@@ -206,7 +206,8 @@ Scatter.prototype.updateVis = function() {
   .attr("fill-opacity", .2)
   .style("fill", vis.c)
   .style("stroke", vis.c)
-  .attr("stroke-width", 3);
+  .attr("stroke-width", 3)
+  .exit().remove();
 
   vis.legend.selectAll("text").enter()
   .append("text")
@@ -214,10 +215,9 @@ Scatter.prototype.updateVis = function() {
   .attr("y", 9)
   .attr("dy", ".35em")
   .style("text-anchor", "end")
-  .text(function(d) { return d;});
+  .text(function(d) { return d;})
+  .exit().remove();
 
-  vis.legend_rect.exit().remove();
-  vis.legend_text.exit().remove();
 
   vis.dots.transition().duration(500)
   .attr("stroke", function(d) { 
@@ -316,26 +316,56 @@ Scatter.prototype.setC = function(stat) {
   vis.updateVis();
 }
 
-Scatter.prototype.pinO = function(stat) {
+Scatter.prototype.pin = function(pokemon) {
   var vis = this;
 
-  vis.c_stat = stat;
-
-  vis.c = d3.scaleOrdinal()
-            .range(vis.c_range[vis.c_stat])
-            .domain(vis.c_domain[vis.c_stat]);
+  if (pokemon) {
+    vis.dots.transition().duration(80)
+    .attr("stroke-opacity",function(d) {
+      if(pokemon.includes(d.name)) {
+        return .8;
+      } else {
+        return .1;
+      }
+    })
+    .attr("fill-opacity",function(d) {
+      if(pokemon.includes(d.name)) {
+        return .8;
+      } else {
+        return .1;
+      }
+    });
+  } else {vis.dots.transition().duration(80)
+    .attr("stroke-opacity",.6)
+    .attr("fill-opacity",.2);
+  }
 
   vis.updateVis();
 }
 
-Scatter.prototype.pinS = function(stat) {
+Scatter.prototype.pinType = function(type) {
   var vis = this;
 
-  vis.c_stat = stat;
-
-  vis.c = d3.scaleOrdinal()
-            .range(vis.c_range[vis.c_stat])
-            .domain(vis.c_domain[vis.c_stat]);
+  if (pokemon) {
+    vis.dots.transition().duration(80)
+    .attr("stroke-opacity",function(d) {
+      if(pokemon.includes(d.name)) {
+        return .8;
+      } else {
+        return .1;
+      }
+    })
+    .attr("fill-opacity",function(d) {
+      if(pokemon.includes(d.name)) {
+        return .8;
+      } else {
+        return .1;
+      }
+    });
+  } else {vis.dots.transition().duration(80)
+    .attr("stroke-opacity",.6)
+    .attr("fill-opacity",.2);
+  }
 
   vis.updateVis();
 }
