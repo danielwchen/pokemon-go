@@ -73,7 +73,7 @@ Scatter.prototype.createVis = function() {
   // set the dimensions and margins of the graph
   vis.margin = {top: 40, right: 80, bottom: 40, left: 40};
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
-  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
+  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom - 30;
 
   vis.svgparent = d3.select(vis.parentElement).append("svg")
   .attr("width", vis.width + vis.margin.left + vis.margin.right)
@@ -223,7 +223,7 @@ Scatter.prototype.resize = function(w, h) {
   vis.winHeight = h;
 
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
-  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
+  vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom - 30;
 
   vis.svgparent
   .attr("width", vis.width + vis.margin.left + vis.margin.right)
