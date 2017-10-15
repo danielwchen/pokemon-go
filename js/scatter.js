@@ -101,11 +101,11 @@ Scatter.prototype.createVis = function() {
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
     return d[vis.x_stat];
-  })]);
+  }) + 100]);
 
   vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
     return d[vis.y_stat];
-  })]);
+  }) + 100]);
 
   vis.xAxis = vis.svg.append("g")
   .attr("transform", "translate(0," + vis.height + ")")
@@ -154,11 +154,11 @@ Scatter.prototype.createVis = function() {
   .data(vis.c.domain())
   .enter().append("g")
   .attr("class", "legend")
-  .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 30) + ")"; });
+  .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 20) + ")"; });
 
   vis.legend.append("rect")
   .attr("class", "legend-rect")
-  .attr("x", vis.width + 24)
+  .attr("x", vis.width + 30)
   .attr("width", 18)
   .attr("height", 18)
   .attr("stroke-opacity", .6)
@@ -168,7 +168,7 @@ Scatter.prototype.createVis = function() {
   .attr("stroke-width", 3);
 
   vis.legend.append("text")
-  .attr("x", vis.width + 12)
+  .attr("x", vis.width + 20)
   .attr("y", 9)
   .attr("dy", ".35em")
   .style("text-anchor", "end")
@@ -261,7 +261,7 @@ Scatter.prototype.setX = function(stat) {
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
     return d[vis.x_stat]; 
-  })]);
+  })+100]);
 
 
   vis.updateVis();
@@ -274,7 +274,7 @@ Scatter.prototype.setY = function(stat) {
 
   vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
     return d[vis.y_stat]; 
-  })]);
+  })+100]);
 
   vis.updateVis();
 }
