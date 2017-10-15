@@ -61,7 +61,7 @@ Scatter.prototype.createVis = function() {
   var vis = this;
 
   // set the dimensions and margins of the graph
-  vis.margin = {top: 20, right: 300, bottom: 300, left: 20};
+  vis.margin = {top: 20, right: 20, bottom: 100, left: 100};
   vis.width = $(vis.parentElement).width() - vis.margin.left - vis.margin.right;
   vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
@@ -154,7 +154,7 @@ Scatter.prototype.createVis = function() {
   // vis.legend = svg.selectAll(".legend")
   // .data()
 
-  vis.legend = svg.selectAll(".legend")
+  vis.legend = vis.svg.selectAll(".legend")
       .data(vis.c.domain())
     .enter().append("g")
       .attr("class", "legend")
