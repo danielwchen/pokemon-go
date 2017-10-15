@@ -196,6 +196,26 @@ Scatter.prototype.updateVis = function() {
   vis.yLabel
   .text(vis.y_stat);
 
+  vis.legend.enter()
+  .attr("class", "legend-rect")
+  .attr("x", vis.width + 36)
+  .attr("width", 18)
+  .attr("height", 18)
+  .attr("stroke-opacity", .6)
+  .attr("fill-opacity", .2)
+  .style("fill", vis.c)
+  .style("stroke", vis.c)
+  .attr("stroke-width", 3);
+
+  vis.legend.append("text")
+  .attr("x", vis.width + 28)
+  .attr("y", 9)
+  .attr("dy", ".35em")
+  .style("text-anchor", "end")
+  .text(function(d) { return d;});
+
+  vis.legend.exit().remove();
+
   vis.dots.transition().duration(500)
   .attr("stroke", function(d) { 
     if (vis.c_stat == 'type') {
