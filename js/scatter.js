@@ -185,6 +185,8 @@ Scatter.prototype.createVis = function() {
 Scatter.prototype.updateVis = function() {
   var vis = this;
 
+  vis.updateLegend(vis.c_stat);
+
   vis.xAxis
   .call(d3.axisBottom(vis.x).tickSizeInner(-vis.height).tickPadding(10));
 
@@ -381,7 +383,7 @@ Scatter.prototype.initLegend = function() {
   vis.legend_rect1 = vis.svg.selectAll(".legend-rect1")
   .data(vis.c_domain.type)
   .enter().append("rect")
-  .attr("class", "legend-rect1")
+  .attr("class", "legend-rect1 legend-rect")
   .attr("x", vis.width + 36)
   .attr("y", function(d,i) { return i*20+15; })
   .attr("width", 18)
@@ -409,7 +411,7 @@ Scatter.prototype.initLegend = function() {
   vis.legend_rect2 = vis.svg.selectAll(".legend-rect2")
   .data(vis.c_domain.evol)
   .enter().append("rect")
-  .attr("class", "legend-rect2")
+  .attr("class", "legend-rect2 legend-rect")
   .attr("x", vis.width + 36)
   .attr("y", function(d,i) { return i*20+15; })
   .attr("width", 18)
@@ -437,7 +439,7 @@ Scatter.prototype.initLegend = function() {
   vis.legend_rect3 = vis.svg.selectAll(".legend-rect3")
   .data(vis.c_domain.lege)
   .enter().append("rect")
-  .attr("class", "legend-rect3")
+  .attr("class", "legend-rect3 legend-rect")
   .attr("x", vis.width + 36)
   .attr("y", function(d,i) { return i*20+15; })
   .attr("width", 18)
@@ -466,21 +468,61 @@ Scatter.prototype.initLegend = function() {
 Scatter.prototype.updateLegend = function(stat) {
   var vis = this;
 
-  vis.legend_rect1
-  .attr("x", vis.width + 36);
+  if (stat == 'type') {
+    vis.legend_rect1
+    .attr("x", vis.width + 36);
 
-  vis.legend_text1 
-  .attr("x", vis.width + 28);
+    vis.legend_text1 
+    .attr("x", vis.width + 28);
 
-  vis.legend_rect2 
-  .attr("x", vis.width + 36);
+    vis.legend_rect2 
+    .attr("x", vis.width + 200);
 
-  vis.legend_text2
-  .attr("x", vis.width + 28);
+    vis.legend_text2
+    .attr("x", vis.width + 200);
 
-  vis.legend_rect3
-  .attr("x", vis.width + 36);
+    vis.legend_rect3
+    .attr("x", vis.width + 200);
 
-  vis.legend_text3
-  .attr("x", vis.width + 28);
+    vis.legend_text3
+    .attr("x", vis.width + 200);
+  } else if (stat == 'evol') {
+    vis.legend_rect1
+    .attr("x", vis.width + 200);
+
+    vis.legend_text1 
+    .attr("x", vis.width + 200);
+
+    vis.legend_rect2 
+    .attr("x", vis.width + 36);
+
+    vis.legend_text2
+    .attr("x", vis.width + 28);
+
+    vis.legend_rect3
+    .attr("x", vis.width + 200);
+
+    vis.legend_text3
+    .attr("x", vis.width + 200);
+  } else {
+
+    vis.legend_rect1
+    .attr("x", vis.width + 200);
+
+    vis.legend_text1 
+    .attr("x", vis.width + 200);
+
+    vis.legend_rect2 
+    .attr("x", vis.width + 200);
+
+    vis.legend_text2
+    .attr("x", vis.width + 200);
+
+    vis.legend_rect3
+    .attr("x", vis.width + 36);
+
+    vis.legend_text3
+    .attr("x", vis.width + 28);
+  }
+  
 }
