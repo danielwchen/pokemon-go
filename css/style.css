@@ -6,14 +6,14 @@
 }
 
 @font-face {
-    font-family: Pokemon;
-    src: url("../fonts/Pokemon Hollow.ttf") format("opentype");
-}
-
-@font-face {
     font-family: Generica;
     font-weight: bold;
     src: url("../fonts/Generica Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Pokemon;
+    src: url("../fonts/Pokemon Hollow.ttf") format("opentype");
 }
 
 body {
@@ -26,6 +26,7 @@ body {
   width: 80%;
   margin: 0 auto;
   color: #DADADA;
+  text-align: center;
 }
 
 label {
@@ -178,4 +179,9 @@ form {
   width: 80%;
   text-align: center;
   margin: 0px auto 10% auto;
+}
+
+.interlude > img {
+    display: block;
+    margin: 0 auto;
 }
