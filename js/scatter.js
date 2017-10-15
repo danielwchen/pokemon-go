@@ -202,8 +202,6 @@ Scatter.prototype.createVis = function() {
   .on("mouseover", function(d) { vis.tip.show(d); })
   .on("mouseout", function(d) { vis.tip.hide(d); });
 
-  console.log("done");
-
   vis.updateVis();
 };
 
@@ -374,13 +372,10 @@ Scatter.prototype.setC = function(stat) {
 Scatter.prototype.pin = function(pokemon) {
   var vis = this;
 
-  console.log("check");
-
   if (pokemon) {
     vis.dots.transition().duration(80)
     .attr("stroke-opacity",function(d) {
       if(pokemon.includes(d.name)) {
-        console.log("yes");
         return 0.8;
       } else {
         return 0.1;
