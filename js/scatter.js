@@ -105,17 +105,17 @@ Scatter.prototype.createVis = function() {
   vis.yAxis = vis.svg.append("g")
   .call(d3.axisLeft(vis.y));
 
-  vis.xLabel = vis.svg.selectAll(".xLabel")
+  vis.xLabel = vis.svg
   .append("text")
-  .attr("class", "xLabel")
+  .attr("class", "x-label axis-label")
   .attr("x", vis.width)
   .attr("y", -6)
   .style("text-anchor", "end")
   .text(vis.x_stat);
 
-  vis.yLabel = vis.svg.selectAll(".yLabel")
+  vis.yLabel = vis.svg
   .append("text")
-  .attr("class", "yLabel")
+  .attr("class", "y-label axis-label")
   .attr("transform", "rotate(-90)")
   .attr("y", 6)
   .attr("dy", ".71em")
