@@ -2,7 +2,7 @@
  * Created by Daniel on 10/10/17.
  */
 
-console.log("updated17")
+ console.log("updated17")
 
  var w = window,
  d = document,
@@ -12,7 +12,7 @@ console.log("updated17")
 
  checkWinStat()
 
-function checkWinStat() {
+ function checkWinStat() {
   x = w.innerWidth || e.clientWidth || g.clientWidth;
   y = w.innerHeight|| e.clientHeight|| g.clientHeight;
   ypos = w.scrollY;
@@ -31,14 +31,17 @@ checkWinStat();
 scatterStatic = new Scatter("#bg-vis", 0.9*x, y);
 scatter = new Scatter("#vis", x, 0.9*y);
 
-d3.graphScroll()
-.graph(d3.selectAll('#graph'))
-.container(d3.select('#container'))
-.sections(d3.selectAll('#sections > div'))
-.on('active', function(i){
-  console.log(i + 'th section active');
-  updateScatter(i);
-})
+$( document ).ready(function() {
+  d3.graphScroll()
+  .graph(d3.selectAll('#graph'))
+  .container(d3.select('#container'))
+  .sections(d3.selectAll('#sections > div'))
+  .on('active', function(i){
+    console.log(i + 'th section active');
+    updateScatter(i);
+  })
+});
+
 
 d3.select("#x-form")
 .on("change", function() { scatter.setX(d3.select("#x-form").property("value")); });
