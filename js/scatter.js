@@ -141,7 +141,7 @@ Scatter.prototype.createVis = function() {
   .attr("class", "legend")
   .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 15) + ")"; });
 
-  vis.legend_rect = vis.legend.append("rect")
+  vis.legend.append("rect")
   .attr("class", "legend-rect")
   .attr("x", vis.width + 36)
   .attr("width", 18)
@@ -152,7 +152,7 @@ Scatter.prototype.createVis = function() {
   .style("stroke", vis.c)
   .attr("stroke-width", 3);
 
-  vis.legend_text = vis.legend.append("text")
+  vis.legend.append("text")
   .attr("x", vis.width + 28)
   .attr("y", 9)
   .attr("dy", ".35em")
@@ -197,7 +197,7 @@ Scatter.prototype.updateVis = function() {
   vis.yLabel
   .text(vis.y_stat);
 
-  vis.legend_rect.enter()
+  vis.legend.selectAll("rect").enter()
   .attr("class", "legend-rect")
   .attr("x", vis.width + 36)
   .attr("width", 18)
@@ -208,7 +208,8 @@ Scatter.prototype.updateVis = function() {
   .style("stroke", vis.c)
   .attr("stroke-width", 3);
 
-  vis.legend_text.append("text")
+  vis.legend.selectAll("text").enter()
+  .append("text")
   .attr("x", vis.width + 28)
   .attr("y", 9)
   .attr("dy", ".35em")
@@ -269,10 +270,10 @@ Scatter.prototype.resize = function(w, h) {
 
 
   vis.legend.selectAll("rect")
-  .attr("x", vis.width - 18);
+  .attr("x", vis.width + 36);
 
   vis.legend.selectAll("text")
-  .attr("x", vis.width - 24);
+  .attr("x", vis.width + 28);
 
   vis.updateVis();
 
@@ -304,6 +305,30 @@ Scatter.prototype.setY = function(stat) {
 }
 
 Scatter.prototype.setC = function(stat) {
+  var vis = this;
+
+  vis.c_stat = stat;
+
+  vis.c = d3.scaleOrdinal()
+            .range(vis.c_range[vis.c_stat])
+            .domain(vis.c_domain[vis.c_stat]);
+
+  vis.updateVis();
+}
+
+Scatter.prototype.pinO = function(stat) {
+  var vis = this;
+
+  vis.c_stat = stat;
+
+  vis.c = d3.scaleOrdinal()
+            .range(vis.c_range[vis.c_stat])
+            .domain(vis.c_domain[vis.c_stat]);
+
+  vis.updateVis();
+}
+
+Scatter.prototype.pinS = function(stat) {
   var vis = this;
 
   vis.c_stat = stat;
