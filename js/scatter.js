@@ -228,11 +228,11 @@ Scatter.prototype.resize = function(w, h) {
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
   vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
-  vis.svg
-  .attr("width", vis.width + vis.margin.left + vis.margin.right)
-  .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
-  .attr("transform",
-    "translate(" + vis.margin.left + "," + vis.margin.top + ")");
+  // vis.svg
+  // .attr("width", vis.width + vis.margin.left + vis.margin.right)
+  // .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
+  // .attr("transform",
+  //   "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
   vis.x.range([0, vis.width]);
   vis.y.range([vis.height, 0]);
