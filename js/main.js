@@ -177,7 +177,12 @@ function updateScatter (ind) {
       scatterStatic.pin(['Onix', 'Cloyster']);
     }, 600);
     // scatterStatic.pinType();
-  } else {
+  } else if (ind == 16) {
+    d3.select("#container")
+    .attr("class",'graph-scroll-below');
+  }
+
+  else {
     scatterStatic.setX('id');
     scatterStatic.setY('cp');
     scatterStatic.setC('type');
