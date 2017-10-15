@@ -164,3 +164,7 @@ body{
 .legend {
   font: 11px sans-serif;
 }
+
+.tick line{
+    opacity: 0.2;
+  }
