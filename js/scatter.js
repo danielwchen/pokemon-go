@@ -78,7 +78,7 @@ Scatter.prototype.createVis = function() {
   .offset([-8, 0])
   .style('z-index', '999999999')
   .html(function(d) { 
-    return d.name + "<br><img src=\"img/" + d.img + "\" height=\"60px\" width=\"auto\">"; 
+    return d.name + "<br><img src=\"img/" + d.img + "\" height=\"60px\" width=\"auto\"><br>" + vis.x_stat + ": " + d[vis.x_stat] + ", " + vis.y_stat + ": " + d[vis.y_stat]; 
   });
 
   vis.svg.call(vis.tip);
@@ -89,9 +89,6 @@ Scatter.prototype.createVis = function() {
             .range(vis.colors)
             .domain(["Normal","Fire", "Water", "Electric","Grass","Ice","Fighting","Poison","Ground",
               "Flying","Psychic","Bug","Rock","Ghost","Dragon","Dark","Steel","Fairy"]);
-  vis.s = d3.scale.Ordinal()
-            .range([d3.symbolCircle, d3.symbolDiamond])
-            .domain(["FALSE","TRUE"]);
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
     return d[vis.x_stat]; 
@@ -132,38 +129,23 @@ Scatter.prototype.createVis = function() {
 
   vis.dots = vis.svg.selectAll(".dots")
   .data(vis.fin_data)
-  .enter().append("path")
+  .enter().append("circle")
   .attr("class", "dots")
-  .attr("d", function(d) { return vis.s(d.legendary)})
-  // .attr("r", 10)
-  .attr('transform', 'translate(' + vis.x(d[vis.x_stat]) + ',' + vis.y(d[vis.y_stat]) + ')')
-  // .attr("cx", function(d) { return vis.x(d[vis.x_stat]); })
-  // .attr("cy", function(d) { return vis.y(d[vis.y_stat]); })
+  // .attr("d", function(d) { return vis.s(d.legendary)})
+  .attr("r", 10)
+  // .attr('transform', 'translate(' + vis.x(d[vis.x_stat]) + ',' + vis.y(d[vis.y_stat]) + ')')
+  .attr("cx", function(d) { return vis.x(d[vis.x_stat]); })
+  .attr("cy", function(d) { return vis.y(d[vis.y_stat]); })
   .attr("stroke-opacity", .7)
   .attr("fill-opacity", .2)
-    // .attr("stroke", function(d) {
-    //   return vis.getColor(d.type1);
-    // })
   .attr("stroke", function(d) { return vis.c(d.type1); })
   .attr("fill", function(d) {
-    if (d.type2) {
-      return vis.c(d.type2);
-        // return vis.getColor(d.type2);
-      } else {
-        return vis.c(d.type1);
-        // return vis.getColor(d.type1);
-      }
+    if (d.type2) { return vis.c(d.type2); } 
+    else { return vis.c(d.type1); }
     })
   .attr("stroke-width", 3)
-  .on("mouseover", function(d) {
-    vis.tip.show(d);
-  })
-  .on("mouseout", function(d) {
-    vis.tip.hide(d);
-  });
-
-  // vis.legend = svg.selectAll(".legend")
-  // .data()
+  .on("mouseover", function(d) { vis.tip.show(d); })
+  .on("mouseout", function(d) { vis.tip.hide(d); });
 
   vis.legend = vis.svg.selectAll(".legend")
   .data(vis.c.domain())
@@ -171,7 +153,6 @@ Scatter.prototype.createVis = function() {
   .attr("class", "legend")
   .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
-  // draw legend colored rectangles
   vis.legend.append("rect")
   // .attr("class", "legend-rect")
   .attr("x", vis.width - 18)
@@ -184,7 +165,6 @@ Scatter.prototype.createVis = function() {
   .attr("stroke-width", 3)
   ;
 
-  // draw legend text
   vis.legend.append("text")
   .attr("x", vis.width - 24)
   .attr("y", 9)
