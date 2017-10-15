@@ -24,14 +24,14 @@
                         '#96D9D6','#C22E28','#A33EA1','#E2BF65','#A98FF3',
                         '#F95587','#A6B91A','#B6A136','#735797','#6F35FC',
                         '#705746','#B7B7CE','#D685AD'],
-    evol:['#F7D02C','#A6B91A','#C22E28','#6F35FC'],
-    lege:['#B7B7CE','#D685AD']};
+                  evol:['#F7D02C','#A6B91A','#C22E28','#6F35FC'],
+                  lege:['#B7B7CE','#D685AD']};
   this.c_domain = {type:["Normal","Fire", "Water", "Electric","Grass",
                          "Ice","Fighting","Poison","Ground","Flying",
                          "Psychic","Bug","Rock","Ghost","Dragon",
                          "Dark","Steel","Fairy"],
-              evol:["First", "Second","Third","Legendary"],
-              lege:["Nonlegendary","Legendary"] }
+                   evol:["First", "Second","Third","Legendary"],
+                   lege:["Nonlegendary","Legendary"] }
   
 
   this.initVis();
