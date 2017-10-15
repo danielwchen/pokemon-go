@@ -66,10 +66,11 @@ Scatter.prototype.createVis = function() {
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
   vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
-  vis.svg = d3.select(vis.parentElement).append("svg")
+  vis.svgparent = d3.select(vis.parentElement).append("svg")
   .attr("width", vis.width + vis.margin.left + vis.margin.right)
   .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
-  .append("g")
+
+  vis.svg = vis.svgparent.append("g")
   .attr("transform",
     "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
@@ -205,14 +206,10 @@ Scatter.prototype.resize = function(w, h) {
   vis.winWidth = w;
   vis.winHeight = h;
 
-  console.log(vis.winWidth);
-  console.log(vis.width + vis.margin.left + vis.margin.right);
-  console.log(vis.width);
-
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
   vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
-  vis.svg
+  vis.svgparent
   .attr("width", vis.width + vis.margin.left + vis.margin.right)
   .attr("height", vis.height + vis.margin.top + vis.margin.bottom);
 
