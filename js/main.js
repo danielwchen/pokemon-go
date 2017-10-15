@@ -91,73 +91,97 @@ function updateScatter (ind) {
     scatterStatic.setX('health');
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
+    setTimeout(function (){
     scatterStatic.pin(['Mewtwo', 'Magikarp']);
+    }, 600);
     // scatterStatic.pinType();
   } else if (ind == 5) {
     scatterStatic.setX('health');
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
+    setTimeout(function (){
     scatterStatic.pin(['Mewtwo', 'Magikarp', 'Gyarados']);
+    }, 600);
     // scatterStatic.pinType();
   } else if (ind == 6) {
     scatterStatic.setX('cp'); //cp
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
+    setTimeout(function (){
     scatterStatic.pin(['Mewtwo', 'Magikarp']);
+    }, 600);
     // scatterStatic.pinType();
   } else if (ind == 7) {
     scatterStatic.setX('cp'); //cp
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
+    setTimeout(function (){
     scatterStatic.pin();
+    }, 600);
     // scatterStatic.pinType();
   } else if (ind == 8) {
     scatterStatic.setX('attack');
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
+    setTimeout(function (){
     scatterStatic.pin();
+    }, 600);
     // scatterStatic.pinType();
   } else if (ind == 9) {
     scatterStatic.setX('attack');
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
     // scatterStatic.pin();
+    setTimeout(function (){
     scatterStatic.pinType('Bug');
+    }, 600);
   } else if (ind == 10) {
     scatterStatic.setX('attack');
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
     // scatterStatic.pin();
+    setTimeout(function (){
     scatterStatic.pinType('Dragon');
+    }, 600);
   } else if (ind == 11) {
     scatterStatic.setX('health');
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
     // scatterStatic.pin();
+    setTimeout(function (){
     scatterStatic.pinType('Normal');
+    }, 600);
   } else if (ind == 12) {
     scatterStatic.setX('id');
     scatterStatic.setY('cp');
     scatterStatic.setC('evol');
+    setTimeout(function (){
     scatterStatic.pin();
+    }, 600);
     // scatterStatic.pinType();
   } else if (ind == 13) {
     scatterStatic.setX('id');
     scatterStatic.setY('cp');
     scatterStatic.setC('evol');
+    setTimeout(function (){
     scatterStatic.pin(['Metapod', 'Kakuna']);
+    }, 600);
     // scatterStatic.pinType();
   } else if (ind == 14) {
     scatterStatic.setX('id');
     scatterStatic.setY('defense');
     scatterStatic.setC('evol');
+    setTimeout(function (){
     scatterStatic.pin(['Onix', 'Cloyster']);
+    }, 600);
     // scatterStatic.pinType();
   } else {
     scatterStatic.setX('id');
     scatterStatic.setY('cp');
     scatterStatic.setC('type');
+    setTimeout(function (){
     scatterStatic.pin();
+    }, 600);
     // scatterStatic.pinType();
   }
 
