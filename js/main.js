@@ -50,7 +50,7 @@ d3.select("#x-form")
 d3.select("#y-form")
   .on("change", function() {
 
-    scatter.setY(d3.select("#x-form").property("value"))
+    scatter.setY(d3.select("#y-form").property("value"))
 
   });
 
