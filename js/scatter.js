@@ -15,9 +15,6 @@
   this.y_labels;
   this.opacities;
 
-  this.x_stat = 'attack';
-  this.y_stat = 'cp';
-
   // Type colors from http://www.epidemicjohto.com/t882-type-colors-hex-colors
   this.c_range = {type:['#A8A77A','#EE8130','#6390F0','#F7D02C','#7AC74C',
   '#96D9D6','#C22E28','#A33EA1','#E2BF65','#A98FF3',
@@ -97,11 +94,11 @@ Scatter.prototype.createVis = function() {
             .domain(vis.c_domain.type);
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[vis.x_stat];
+    return d['attack'];
   })]);
 
   vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[vis.y_stat];
+    return d['cp'];
   })]);
 
   vis.xAxis = vis.svg.append("g")
@@ -179,14 +176,6 @@ Scatter.prototype.createVis = function() {
 Scatter.prototype.updateVis = function() {
   var vis = this;
 
-  vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[vis.x_stat]; 
-  })]);
-
-  vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
-    return d[vis.y_stat]; 
-  })]);
-
   vis.xAxis
   .call(d3.axisBottom(vis.x).tickSizeInner(-vis.width).tickPadding(10));
 
@@ -247,7 +236,10 @@ Scatter.prototype.resize = function(w, h) {
 Scatter.prototype.setX = function(stat) {
   var vis = this;
 
-  vis.x_stat = stat;
+  vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
+    return d[stat]; 
+  })]);
+
 
   vis.updateVis();
 }
@@ -255,7 +247,9 @@ Scatter.prototype.setX = function(stat) {
 Scatter.prototype.setY = function(stat) {
   var vis = this;
 
-  vis.y_stat = stat;
+  vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
+    return d[stat]; 
+  })]);
 
   vis.updateVis();
 }
