@@ -59,42 +59,50 @@ function updateScatter (ind) {
     scatterStatic.setX('attack');
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
-    scatterStatic.pin();
+    setTimeout(function (){
+      scatterStatic.pin();
+    }, 600);
     // scatterStatic.pinType();
   } else if (ind == 1) {
-    // scatterStatic.setX('attack');
-    // scatterStatic.setY('defense');
-    // scatterStatic.setC('type');
+    scatterStatic.setX('attack');
+    scatterStatic.setY('defense');
+    scatterStatic.setC('type');
+    setTimeout(function (){
     scatterStatic.pin(['Onix', 'Cloyster']);
+    }, 600);
     // scatterStatic.pinType();
   } else if (ind == 2) {
-    // scatterStatic.setX('health');
-    // scatterStatic.setY('defense');
-    // scatterStatic.setC('type');
+    scatterStatic.setX('health');
+    scatterStatic.setY('defense');
+    scatterStatic.setC('type');
+    setTimeout(function (){
     scatterStatic.pin(['Onix', 'Cloyster', 'Chansey']);
+    }, 600);
     // scatterStatic.pinType();
   } else if (ind == 3) {
-    // scatterStatic.setX('health');
-    // scatterStatic.setY('defense');
-    // scatterStatic.setC('type');
+    scatterStatic.setX('health');
+    scatterStatic.setY('defense');
+    scatterStatic.setC('type');
+    setTimeout(function (){
     scatterStatic.pin(['Cloyster', 'Chansey', 'Snorlax', 'Wigglytuff', 'Vaporeon']);
+    }, 600);
     // scatterStatic.pinType();
   } else if (ind == 4) {
-    // scatterStatic.setX('health');
-    // scatterStatic.setY('attack');
-    // scatterStatic.setC('type');
+    scatterStatic.setX('health');
+    scatterStatic.setY('attack');
+    scatterStatic.setC('type');
     scatterStatic.pin(['Mewtwo', 'Magikarp']);
     // scatterStatic.pinType();
   } else if (ind == 5) {
-    // scatterStatic.setX('health');
-    // scatterStatic.setY('attack');
-    // scatterStatic.setC('type');
+    scatterStatic.setX('health');
+    scatterStatic.setY('attack');
+    scatterStatic.setC('type');
     scatterStatic.pin(['Mewtwo', 'Magikarp', 'Gyarados']);
     // scatterStatic.pinType();
   } else if (ind == 6) {
-    // scatterStatic.setX('cp'); //cp
-    // scatterStatic.setY('attack');
-    // scatterStatic.setC('type');
+    scatterStatic.setX('cp'); //cp
+    scatterStatic.setY('attack');
+    scatterStatic.setC('type');
     scatterStatic.pin(['Mewtwo', 'Magikarp']);
     // scatterStatic.pinType();
   } else if (ind == 7) {
