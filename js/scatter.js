@@ -239,7 +239,7 @@ Scatter.prototype.updateVis = function() {
   vis.legend_text.enter().append("text")
   .attr("class", "legend-text")
   .attr("x", vis.width + 28)
-  .attr("y", function(d,i) {return i*20+15+9; )
+  .attr("y", function(d,i) {return i*20+15+9; })
   .attr("dy", ".35em")
   .style("text-anchor", "end")
   .text(function(d) { return d;});

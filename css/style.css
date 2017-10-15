@@ -1,6 +1,6 @@
 /* YOUR CSS STYLES */
 /* Pokemon colors from https://designpieces.com/palette/pokemon-logo-color-palette-hex-and-rgb/ */
-/*@font-face {
+@font-face {
     font-family: Generica;
     src: url("../fonts/Generica.otf") format("opentype");
 }
@@ -21,7 +21,6 @@ body {
   background-color: #2a75bb;
   font-size: 16px;
 }
-
 .interlude {
   width: 80%;
   margin: 0 auto;
@@ -33,6 +32,7 @@ label {
   color: #DADADA;
   font-size: 20px;
 }
+/*
 
 #container{
   position: relative;
