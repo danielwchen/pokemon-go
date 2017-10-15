@@ -4,10 +4,9 @@
  *  @param _eventHandler    -- Event handler
  */
 
- Scatter = function(_parentElement, _currInd, _winHeight) {
+ Scatter = function(_parentElement, _winHeight) {
 
   this.parentElement = _parentElement;
-  this.currInd = _currInd;
   this.winHeight = _winHeight;
 
   this.fin_data;
@@ -156,7 +155,7 @@ Scatter.prototype.updateVis = function() {
 
   vis.yLabel
   .text(vis.y_stat);
-  
+
   vis.dots.transition().duration(200)
   .attr("cx", function(d) { return vis.x(d[vis.x_stat]); })
   .attr("cy", function(d) { return vis.y(d[vis.y_stat]); })
@@ -277,50 +276,3 @@ Scatter.prototype.getColor = function(type) {
     return "black";
   }
 }
-
-// Scatter.prototype.updateInd = function(ind) {
-//   var vis = this;
-
-//   vis.currInd = ind;
-
-//   vis.updateVis();
-  
-// }
-
-
-// function getProperYValue(d) {
-//   if (d3.select(".form-control").property("value") == "goals") {
-//     return d.GOALS;
-//   } else if (d3.select(".form-control").property("value") == "averagegoals") {
-//     return d.AVERAGE_GOALS;
-//   } else if (d3.select(".form-control").property("value") == "matches") {
-//     return d.MATCHES;
-//   } else if (d3.select(".form-control").property("value") == "teams") {
-//     return d.TEAMS;
-//   } else {
-//     return d.AVERAGE_ATTENDANCE;
-//   }
-// }
-
-
-d3.select("#x-form")
-  .on("change", function() {
-
-    vis.setX(d3.select("#x-form").property("value"))
-
-  });
-
-d3.select("#y-form")
-  .on("change", function() {
-
-    vis.setY(d3.select("#x-form").property("value"))
-
-  });
-
-d3.select("#size-form")
-  .on("change", function() {
-  });
-
-d3.select("#shape-form")
-  .on("change", function() {
-  });
