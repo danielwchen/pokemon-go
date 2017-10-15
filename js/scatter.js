@@ -214,7 +214,7 @@ Scatter.prototype.setX = function(stat) {
 
   vis.x_stat = stat;
 
-  updateVisualization();
+  vis.updateVis();
 }
 
 Scatter.prototype.setY = function(stat) {
@@ -222,7 +222,7 @@ Scatter.prototype.setY = function(stat) {
 
   vis.y_stat = stat;
 
-  updateVisualization();
+  vis.updateVis();
 }
 
 Scatter.prototype.setSize = function(stat) {
@@ -230,7 +230,7 @@ Scatter.prototype.setSize = function(stat) {
 
   vis.size_stat = stat;
 
-  updateVisualization();
+  vis.updateVis();
 }
 
 Scatter.prototype.setShape = function(stat) {
@@ -238,7 +238,7 @@ Scatter.prototype.setShape = function(stat) {
 
   vis.y_stat;
 
-  updateVisualization();
+  vis.updateVis();
 }
 
 Scatter.prototype.getColor = function(type) {
