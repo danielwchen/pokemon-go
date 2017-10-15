@@ -68,7 +68,7 @@ function updateScatter (ind) {
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
     setTimeout(function (){
-    scatterStatic.pin(['Onix', 'Cloyster']);
+      scatterStatic.pin(['Onix', 'Cloyster']);
     }, 600);
     // scatterStatic.pinType();
   } else if (ind == 2) {
@@ -76,7 +76,7 @@ function updateScatter (ind) {
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
     setTimeout(function (){
-    scatterStatic.pin(['Onix', 'Cloyster', 'Chansey']);
+      scatterStatic.pin(['Onix', 'Cloyster', 'Chansey']);
     }, 600);
     // scatterStatic.pinType();
   } else if (ind == 3) {
@@ -84,7 +84,7 @@ function updateScatter (ind) {
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
     setTimeout(function (){
-    scatterStatic.pin(['Cloyster', 'Chansey', 'Snorlax', 'Wigglytuff', 'Vaporeon']);
+      scatterStatic.pin(['Cloyster', 'Chansey', 'Snorlax', 'Wigglytuff', 'Vaporeon']);
     }, 600);
     // scatterStatic.pinType();
   } else if (ind == 4) {
@@ -92,7 +92,7 @@ function updateScatter (ind) {
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
     setTimeout(function (){
-    scatterStatic.pin(['Mewtwo', 'Magikarp']);
+      scatterStatic.pin(['Mewtwo', 'Magikarp']);
     }, 600);
     // scatterStatic.pinType();
   } else if (ind == 5) {
@@ -100,7 +100,7 @@ function updateScatter (ind) {
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
     setTimeout(function (){
-    scatterStatic.pin(['Mewtwo', 'Magikarp', 'Gyarados']);
+      scatterStatic.pin(['Mewtwo', 'Magikarp', 'Gyarados']);
     }, 600);
     // scatterStatic.pinType();
   } else if (ind == 6) {
@@ -108,7 +108,7 @@ function updateScatter (ind) {
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
     setTimeout(function (){
-    scatterStatic.pin(['Mewtwo', 'Magikarp']);
+      scatterStatic.pin(['Mewtwo', 'Magikarp']);
     }, 600);
     // scatterStatic.pinType();
   } else if (ind == 7) {
@@ -116,7 +116,7 @@ function updateScatter (ind) {
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
     setTimeout(function (){
-    scatterStatic.pin();
+      scatterStatic.pin();
     }, 600);
     // scatterStatic.pinType();
   } else if (ind == 8) {
@@ -124,7 +124,7 @@ function updateScatter (ind) {
     scatterStatic.setY('defense');
     scatterStatic.setC('type');
     setTimeout(function (){
-    scatterStatic.pin();
+      scatterStatic.pin();
     }, 600);
     // scatterStatic.pinType();
   } else if (ind == 9) {
@@ -133,7 +133,7 @@ function updateScatter (ind) {
     scatterStatic.setC('type');
     // scatterStatic.pin();
     setTimeout(function (){
-    scatterStatic.pinType('Bug');
+      scatterStatic.pinType('Bug');
     }, 600);
   } else if (ind == 10) {
     scatterStatic.setX('attack');
@@ -141,7 +141,7 @@ function updateScatter (ind) {
     scatterStatic.setC('type');
     // scatterStatic.pin();
     setTimeout(function (){
-    scatterStatic.pinType('Dragon');
+      scatterStatic.pinType('Dragon');
     }, 600);
   } else if (ind == 11) {
     scatterStatic.setX('health');
@@ -149,14 +149,14 @@ function updateScatter (ind) {
     scatterStatic.setC('type');
     // scatterStatic.pin();
     setTimeout(function (){
-    scatterStatic.pinType('Normal');
+      scatterStatic.pinType('Normal');
     }, 600);
   } else if (ind == 12) {
     scatterStatic.setX('id');
     scatterStatic.setY('cp');
     scatterStatic.setC('evol');
     setTimeout(function (){
-    scatterStatic.pin();
+      scatterStatic.pin();
     }, 600);
     // scatterStatic.pinType();
   } else if (ind == 13) {
@@ -164,7 +164,7 @@ function updateScatter (ind) {
     scatterStatic.setY('cp');
     scatterStatic.setC('evol');
     setTimeout(function (){
-    scatterStatic.pin(['Metapod', 'Kakuna']);
+      scatterStatic.pin(['Metapod', 'Kakuna']);
     }, 600);
     // scatterStatic.pinType();
   } else if (ind == 14) {
@@ -172,7 +172,7 @@ function updateScatter (ind) {
     scatterStatic.setY('defense');
     scatterStatic.setC('evol');
     setTimeout(function (){
-    scatterStatic.pin(['Onix', 'Cloyster']);
+      scatterStatic.pin(['Onix', 'Cloyster']);
     }, 600);
     // scatterStatic.pinType();
   } else {
@@ -180,7 +180,7 @@ function updateScatter (ind) {
     scatterStatic.setY('cp');
     scatterStatic.setC('type');
     setTimeout(function (){
-    scatterStatic.pin();
+      scatterStatic.pin();
     }, 600);
     // scatterStatic.pinType();
   }

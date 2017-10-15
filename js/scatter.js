@@ -135,30 +135,6 @@ Scatter.prototype.createVis = function() {
   .style("text-anchor", "end")
   .text(vis.y_stat);
 
-  // vis.legend = vis.svg.selectAll(".legend")
-  // .data(vis.c.domain())
-  // .enter().append("g")
-  // .attr("class", "legend")
-  // .attr("transform", function(d, i) { return "translate(0," + (i * 20 + 15) + ")"; });
-
-  // vis.legend.append("rect")
-  // .attr("class", "legend-rect")
-  // .attr("x", vis.width + 36)
-  // .attr("width", 18)
-  // .attr("height", 18)
-  // .attr("stroke-opacity", .6)
-  // .attr("fill-opacity", .2)
-  // .style("fill", vis.c)
-  // .style("stroke", vis.c)
-  // .attr("stroke-width", 3);
-
-  // vis.legend.append("text")
-  // .attr("x", vis.width + 28)
-  // .attr("y", 9)
-  // .attr("dy", ".35em")
-  // .style("text-anchor", "end")
-  // .text(function(d) { return d;});
-
   vis.initLegend();
 
   vis.dots = vis.svg.selectAll(".dots")
@@ -175,7 +151,7 @@ Scatter.prototype.createVis = function() {
     if (d.type2) { return vis.c(d.type2); } 
     else { return vis.c(d.type1); }
     })
-  .attr("stroke-width", 3)
+  .attr("stroke-width", 5)
   .on("mouseover", function(d) { vis.tip.show(d); })
   .on("mouseout", function(d) { vis.tip.hide(d); });
 
@@ -315,21 +291,21 @@ Scatter.prototype.pin = function(pokemon) {
       if(pokemon.includes(d.name)) {
         return 0.8;
       } else {
-        return 0.1;
+        return 0.2;
       }
     })
     .attr("stroke-opacity",function(d) {
       if(pokemon.includes(d.name)) {
         return 0.8;
       } else {
-        return 0.1;
+        return 0.2;
       }
     })
     .attr("fill-opacity",function(d) {
       if(pokemon.includes(d.name)) {
         return 0.8;
       } else {
-        return 0.1;
+        return 0.2;
       }
     });
   } else {vis.dots.transition().duration(80)
@@ -361,7 +337,7 @@ Scatter.prototype.pinType = function(type) {
       } else if (d.type2 == type) {
         return 0.8;
       } else {
-        return 0.1;
+        return 0.2;
       }
     })
     .attr("fill-opacity",function(d) {
@@ -370,7 +346,73 @@ Scatter.prototype.pinType = function(type) {
       } else if (d.type2 == type) {
         return 0.8;
       }else {
-        return 0.1;
+        return 0.2;
+      }
+    });
+  } else {vis.dots.transition().duration(80)
+    .attr("r", 10)
+    .attr("stroke-opacity",0.6)
+    .attr("fill-opacity",0.2);
+  }
+}
+
+Scatter.prototype.pinEvol = function(evol) {
+  var vis = this;
+
+  if (evol) {
+    vis.dots.transition().duration(80)
+    .attr("r", function(d) {
+      if(d.evol == evol) {
+        return 13;
+      } else {
+        return 8;
+      }
+    })
+    .attr("stroke-opacity",function(d) {
+      if(d.evol == evol) {
+        return 0.8;
+      } else {
+        return 0.2;
+      }
+    })
+    .attr("fill-opacity",function(d) {
+      if(d.evol == evol) {
+        return 0.8;
+      }else {
+        return 0.2;
+      }
+    });
+  } else {vis.dots.transition().duration(80)
+    .attr("r", 10)
+    .attr("stroke-opacity",0.6)
+    .attr("fill-opacity",0.2);
+  }
+}
+
+Scatter.prototype.pinLege = function(lege) {
+  var vis = this;
+
+  if (lege) {
+    vis.dots.transition().duration(80)
+    .attr("r", function(d) {
+      if(d.lege == lege) {
+        return 13;
+      } else {
+        return 8;
+      }
+    })
+    .attr("stroke-opacity",function(d) {
+      if(d.lege == lege) {
+        return 0.8;
+      } else {
+        return 0.2;
+      }
+    })
+    .attr("fill-opacity",function(d) {
+      if(d.lege == lege) {
+        return 0.8;
+      }else {
+        return 0.2;
       }
     });
   } else {vis.dots.transition().duration(80)
@@ -400,7 +442,7 @@ Scatter.prototype.initLegend = function() {
   .style("stroke", function(d,i) {
     return vis.c_range.type[i];
   })
-  .attr("stroke-width", 3)
+  .attr("stroke-width", 5)
   .on("mouseover", function(d) {
     vis.pinType(d)
   })
@@ -434,7 +476,13 @@ Scatter.prototype.initLegend = function() {
   .style("stroke", function(d,i) {
     return vis.c_range.evol[i];
   })
-  .attr("stroke-width", 3);
+  .attr("stroke-width", 5)
+  .on("mouseover", function(d) {
+    vis.pinEvol(d)
+  })
+  .on("mouseout", function() {
+    vis.pinEvol();
+  });
 
   vis.legend_text2 = vis.svg.selectAll(".legend-text2")
   .data(vis.c_domain.evol)
@@ -462,7 +510,13 @@ Scatter.prototype.initLegend = function() {
   .style("stroke", function(d,i) {
     return vis.c_range.lege[i];
   })
-  .attr("stroke-width", 3);
+  .attr("stroke-width", 5)
+  .on("mouseover", function(d) {
+    vis.pinLege(d)
+  })
+  .on("mouseout", function() {
+    vis.pinLege();
+  });
 
   vis.legend_text3 = vis.svg.selectAll(".legend-text3")
   .data(vis.c_domain.lege)
