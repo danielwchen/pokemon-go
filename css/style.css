@@ -145,5 +145,6 @@ body{
 }
 
 .dots:hover {
-  opacity: 1;
+  fill-opacity: .4;
+  stroke-opacity: .8;
 }
