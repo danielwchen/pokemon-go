@@ -24,7 +24,7 @@ body {
 .interlude {
   width: 80%;
   margin: 0 auto;
-  color: #DADADA;
+  color: white;
   text-align: center;
 }
 
@@ -86,7 +86,9 @@ h1{
 #vis {
   margin: 50px auto 10px auto;
   background-color: white;
-  box-shadow: 0 0 40px white;
+  border: 2px solid;
+  border-color: #3c5aa6;
+  box-shadow: 0 0 12px 3px #ffcb05;
   border-radius: 40px;
   min-height: 10px;
 }
@@ -143,6 +145,9 @@ form {
   background-color: white;
   box-shadow: 0 0 40px white;
   border-radius: 40px;
+  border: 2px solid;
+  border-color: #3c5aa6;
+  box-shadow: 0 0 12px 3px #ffcb05;
 
 
 }
