@@ -151,6 +151,14 @@ Scatter.prototype.createVis = function() {
 Scatter.prototype.updateVis = function() {
   var vis = this;
 
+  vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
+    return d[vis.x_stat]; 
+  })]);
+
+  vis.y.domain([0, d3.max(vis.fin_data, function(d) { 
+    return d[vis.y_stat]; 
+  })]);
+
   vis.xAxis
   .call(d3.axisBottom(vis.x));
 
