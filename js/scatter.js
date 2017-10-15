@@ -15,31 +15,14 @@
   this.y_labels;
   this.opacities;
 
-  this.x_stat;
-  this.y_stat;
+  this.x_stat = 'attack';
+  this.y_stat = 'cp';
 
-  // Normal Type: A8A77A
-  // Fire Type:  EE8130
-  // Water Type:  6390F0
-  // Electric Type:  F7D02C
-  // Grass Type:  7AC74C
-  // Ice Type:  96D9D6
-  // Fighting Type:  C22E28
-  // Poison Type:  A33EA1
-  // Ground Type:  E2BF65
-  // Flying Type:  A98FF3
-  // Psychic Type:  F95587
-  // Bug Type:  A6B91A
-  // Rock Type:  B6A136
-  // Ghost Type:  735797
-  // Dragon Type:  6F35FC
-  // Dark Type:  705746
-  // Steel Type:  B7B7CE
-  // Fairy Type:  D685AD
+  // Type colors from http://www.epidemicjohto.com/t882-type-colors-hex-colors
   this.colors = ['#A8A77A','#EE8130','#6390F0','#F7D02C','#7AC74C',
-  '#96D9D6','#C22E28','#A33EA1','#E2BF65','#A98FF3',
-  '#F95587','#A6B91A','#B6A136','#735797','#6F35FC',
-  '#705746','#B7B7CE','#D685AD'];
+                 '#96D9D6','#C22E28','#A33EA1','#E2BF65','#A98FF3',
+                 '#F95587','#A6B91A','#B6A136','#735797','#6F35FC',
+                 '#705746','#B7B7CE','#D685AD'];
   
 
   this.initVis();
@@ -103,9 +86,6 @@ Scatter.prototype.createVis = function() {
   vis.x = d3.scaleLinear().range([0, vis.width]);
   vis.y = d3.scaleLinear().range([vis.height, 0]);
 
-  vis.setX('attack');
-  vis.setY('cp');
-
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
     return d[vis.x_stat]; 
   })]);
@@ -114,12 +94,10 @@ Scatter.prototype.createVis = function() {
     return d[vis.y_stat]; 
   })]);
 
-  // Add the X Axis
   vis.xAxis = vis.svg.append("g")
   .attr("transform", "translate(0," + vis.height + ")")
   .call(d3.axisBottom(vis.x));
 
-  // Add the Y Axis
   vis.yAxis = vis.svg.append("g")
   .call(d3.axisLeft(vis.y));
 
@@ -131,15 +109,14 @@ Scatter.prototype.createVis = function() {
     return "translate(" + (vis.width / 2) + "," + vis.height + ")";
   });
 
-  vis.xLabel = vis.svg.selectAll(".y-label")
+  vis.yLabel = vis.svg.selectAll(".y-label")
   .append("text")
   .attr("class", "axis-label y-label")
   .text(vis.y_stat)
   .attr("transform", function(d,i) {
     return "translate(-10," + (vis.height / 2) + ")rotate(270)";
-  })
+  });
 
-  // Add the scatterplot
   vis.dots = vis.svg.selectAll(".dots")
   .data(vis.fin_data)
   .enter().append("circle")
@@ -159,7 +136,6 @@ Scatter.prototype.createVis = function() {
       return vis.getColor(d.type1);
     }
   })
-
   .attr("stroke-width", 3)
   .on("mouseover", function(d) {
     vis.tip.show(d);
@@ -174,6 +150,13 @@ Scatter.prototype.createVis = function() {
 Scatter.prototype.updateVis = function() {
   var vis = this;
 
+
+  vis.xLabel
+  .text(vis.x_stat);
+
+  vis.yLabel
+  .text(vis.y_stat);
+  
   vis.dots.transition().duration(200)
   .attr("cx", function(d) { return vis.x(d[vis.x_stat]); })
   .attr("cy", function(d) { return vis.y(d[vis.y_stat]); })
@@ -204,6 +187,16 @@ Scatter.prototype.resize = function(winHeight) {
 
   vis.yAxis
   .call(d3.axisLeft(vis.y));
+
+  vis.xLabel
+  .attr("transform", function(d,i) {
+    return "translate(" + (vis.width / 2) + "," + vis.height + ")";
+  });
+
+  vis.yLabel
+  .attr("transform", function(d,i) {
+    return "translate(-10," + (vis.height / 2) + ")rotate(270)";
+  });
 
   vis.updateVis();
 
@@ -236,7 +229,7 @@ Scatter.prototype.setSize = function(stat) {
 Scatter.prototype.setShape = function(stat) {
   var vis = this;
 
-  vis.y_stat;
+  vis.shape_stat = stat;
 
   vis.updateVis();
 }
@@ -331,47 +324,3 @@ d3.select("#size-form")
 d3.select("#shape-form")
   .on("change", function() {
   });
-
-
-// <form class="form-inline">
-//       <div class="form-group">
-//         <label>X-axis:</label>
-//         <select class="form-control" id="x-form">
-//           <option value="att">Attack</option>
-//           <option value="def">Defense</option>
-//           <option value="cp">Max CP</option>
-//         </select>
-//       </div>
-//     </form>
-
-//     <form class="form-inline">
-//       <div class="form-group">
-//         <label>Y-axis:</label>
-//         <select class="form-control" id="y-form">
-//           <option value="att">Attack</option>
-//           <option value="def">Defense Goals</option>
-//           <option value="cp">Max CP</option>
-//         </select>
-//       </div>
-//     </form>
-
-//     <form class="form-inline">
-//       <div class="form-group">
-//         <label>Size:</label>
-//         <select class="form-control" id="size-form">
-//           <option value="none">None</option>
-//           <option value="cp">Max CP</option>
-//         </select>
-//       </div>
-//     </form>
-
-//     <form class="form-inline">
-//       <div class="form-group">
-//         <label>Shape:</label>
-//         <select class="form-control" id="shape-form">
-//           <option value="none">None</option>
-//           <option value="type">Number of Types</option>
-//           <option value="evol">Evolution Stage</option>
-//         </select>
-//       </div>
-//     </form>
