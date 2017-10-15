@@ -24,18 +24,28 @@ body {
 .interlude {
   width: 80%;
   margin: 0 auto;
+  color: #DADADA;
+}
+
+label {
+  color: #DADADA;
 }
 
 #container{
   position: relative;
   margin: 50px auto 0px auto;
+  width: 90%;
+  background-color: white;
+  box-shadow: 0 0 40px white;
+  border-radius: 40px;
 }
 
 #sections{
   width: 80%;
   position: relative;
   margin: 0px auto;
-  padding-top: 0px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 #sections > div{
@@ -44,8 +54,10 @@ body {
   background: white;
   padding: 10px;
   border: 2px solid;
+  border-color: #3c5aa6;
+  border-radius: 25px;
   max-width: 800px;
-  box-shadow: 0 0 12px 3px gray;
+  box-shadow: 0 0 12px 3px #2a75bb;
   opacity: .8;
   font-family: Georgia;
 }
@@ -90,44 +102,6 @@ h1{
   font-family: Pokemon;
   font-size: 70px;
 }
-
-.mono{
-  font-family: monospace;
-}
-
-
-
-/*
-body{
-  display: block;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  font-family: "Mercury Text G1 A","Mercury Text G1 B","Georgia","Times New Roman","Times",sans-serif;
-  background-color: #e3eaec;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-bottom: 10%;
-  padding-top: 10%;
-  font-size: 20px;
-}
-
-#graph{
-  width: 100%;
-  position: absolute;
-  top: 0px;
-  z-index: -1;
-}
-
-/*.peoplebar:hover {
-  fill: blue;
-};
-
-.peoplebarvr:hover {
-  fill: blue;
-};*/
-
 
 .textlabels {
   font-size: 14px;
