@@ -154,26 +154,29 @@ Scatter.prototype.createVis = function() {
   // vis.legend = svg.selectAll(".legend")
   // .data()
 
-  // var legend = svg.selectAll(".legend")
-  //     .data(color.domain())
-  //   .enter().append("g")
-  //     .attr("class", "legend")
-  //     .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+  vis.legend = svg.selectAll(".legend")
+      .data(vis.c.domain())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
-  // // draw legend colored rectangles
-  // legend.append("rect")
-  //     .attr("x", width - 18)
-  //     .attr("width", 18)
-  //     .attr("height", 18)
-  //     .style("fill", color);
+  // draw legend colored rectangles
+  vis.legend.append("circle")
+  .attr("r", 5)
+  .attr("cx", vis.width - 10)
+  .attr("stroke-opacity", .6)
+  .attr("fill-opacity", .2)
+  .style("fill", vis.c);
 
-  // // draw legend text
-  // legend.append("text")
-  //     .attr("x", width - 24)
-  //     .attr("y", 9)
-  //     .attr("dy", ".35em")
-  //     .style("text-anchor", "end")
-  //     .text(function(d) { return d;})
+  // draw legend text
+  vis.legend.append("text")
+    .attr("x", vis.width - 16)
+    .attr("y", 5)
+    .attr("dy", 12)
+    .style("text-anchor", "end")
+    .text(function(d) { return d;})
+
+  vis.legend.exit().remove();
 };
 
 Scatter.prototype.updateVis = function() {
