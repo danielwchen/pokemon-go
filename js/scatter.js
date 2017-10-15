@@ -303,6 +303,21 @@ Scatter.prototype.pin = function(pokemon) {
 
   if (pokemon) {
     vis.dots.transition().duration(80)
+    .attr("r", function(d) {
+      if(pokemon.includes(d.name)) {
+        console.log(d.name);
+        return 15;
+      } else {
+        return 8;
+      }
+    })
+    .attr("fill-opacity",function(d) {
+      if(pokemon.includes(d.name)) {
+        return 0.8;
+      } else {
+        return 0.1;
+      }
+    })
     .attr("stroke-opacity",function(d) {
       if(pokemon.includes(d.name)) {
         console.log(d.name);
@@ -319,6 +334,7 @@ Scatter.prototype.pin = function(pokemon) {
       }
     });
   } else {vis.dots.transition().duration(80)
+    .attr("r", 10)
     .attr("stroke-opacity",0.6)
     .attr("fill-opacity",0.2);
   }
