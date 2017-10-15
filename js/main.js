@@ -24,6 +24,8 @@ $( window ).resize(function() {
   scatter.resize(x, 0.9*y);
 });
 
+var gs;
+
 var scatter;
 
 checkWinStat();
@@ -32,7 +34,7 @@ scatterStatic = new Scatter("#bg-vis", 0.9*x, y);
 scatter = new Scatter("#vis", x, 0.9*y);
 
 $( document ).ready(function() {
-  d3.graphScroll()
+  gs = d3.graphScroll()
   .graph(d3.selectAll('#graph'))
   .container(d3.select('#container'))
   .sections(d3.selectAll('#sections > div'))
