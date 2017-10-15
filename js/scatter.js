@@ -85,9 +85,13 @@ Scatter.prototype.createVis = function() {
 
   vis.x = d3.scaleLinear().range([0, vis.width]);
   vis.y = d3.scaleLinear().range([vis.height, 0]);
-  vis.c = d3.scaleOrdinal().range(vis.colors)
-  .domain(["Normal","Fire", "Water", "Electric","Grass","Ice","Fighting","Poison","Ground",
-    "Flying","Psychic","Bug","Rock","Ghost","Dragon","Dark","Steel","Fairy"]);
+  vis.c = d3.scaleOrdinal()
+            .range(vis.colors)
+            .domain(["Normal","Fire", "Water", "Electric","Grass","Ice","Fighting","Poison","Ground",
+              "Flying","Psychic","Bug","Rock","Ghost","Dragon","Dark","Steel","Fairy"]);
+  vis.s = d3.scale.Ordinal()
+            .range([d3.symbolCircle, d3.symbolDiamond])
+            .domain(["FALSE","TRUE"]);
 
   vis.x.domain([0, d3.max(vis.fin_data, function(d) { 
     return d[vis.x_stat]; 
@@ -124,13 +128,17 @@ Scatter.prototype.createVis = function() {
   // })
   .text(vis.y_stat);
 
+
+
   vis.dots = vis.svg.selectAll(".dots")
   .data(vis.fin_data)
-  .enter().append("circle")
+  .enter().append("path")
   .attr("class", "dots")
-  .attr("r", 10)
-  .attr("cx", function(d) { return vis.x(d[vis.x_stat]); })
-  .attr("cy", function(d) { return vis.y(d[vis.y_stat]); })
+  .attr("d", function(d) { return vis.s(d.legendary)})
+  // .attr("r", 10)
+  .attr('transform', 'translate(' + vis.x(d[vis.x_stat]) + ',' + vis.y(d[vis.y_stat]) + ')')
+  // .attr("cx", function(d) { return vis.x(d[vis.x_stat]); })
+  // .attr("cy", function(d) { return vis.y(d[vis.y_stat]); })
   .attr("stroke-opacity", .7)
   .attr("fill-opacity", .2)
     // .attr("stroke", function(d) {
