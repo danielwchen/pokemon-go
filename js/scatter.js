@@ -281,7 +281,6 @@ Scatter.prototype.pin = function(pokemon) {
     vis.dots.transition().duration(80)
     .attr("r", function(d) {
       if(pokemon.includes(d.name)) {
-        console.log(d.name);
         return 13;
       } else {
         return 8;

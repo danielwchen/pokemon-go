@@ -2,7 +2,7 @@
  * Created by Daniel on 10/10/17.
  */
 
- console.log("updated20")
+ // console.log("updated20")
 
  var w = window,
  d = document,
@@ -39,7 +39,7 @@ $( document ).ready(function() {
   .container(d3.select('#container'))
   .sections(d3.selectAll('#sections > div'))
   .on('active', function(i){
-    console.log(i + 'th section active');
+    // console.log(i + 'th section active');
     updateScatter(i);
   })
 });
@@ -177,18 +177,27 @@ function updateScatter (ind) {
       scatterStatic.pin(['Onix', 'Cloyster']);
     }, 600);
     // scatterStatic.pinType();
-  } else if (ind == 16) {
-    d3.select("#container")
-    .attr("class",'graph-scroll-below');
-  }
-
-  else {
+  } else if (ind == 15) {
     scatterStatic.setX('id');
     scatterStatic.setY('cp');
     scatterStatic.setC('type');
     setTimeout(function (){
       scatterStatic.pin();
     }, 600);
+    d3.select("#container")
+    .classed("graph-scroll-below", false)
+    .classed("graph-scroll-fixed", true);
+  }
+  else if (ind == 16) {
+    scatterStatic.setX('id');
+    scatterStatic.setY('cp');
+    scatterStatic.setC('type');
+    setTimeout(function (){
+      scatterStatic.pin();
+    }, 600);
+    d3.select("#container")
+    .classed("graph-scroll-below", true)
+    .classed("graph-scroll-fixed", false);
     // scatterStatic.pinType();
   }
 
