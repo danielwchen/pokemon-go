@@ -179,7 +179,7 @@ form {
   border: 2px solid;
   width: 80%;
   max-width: 800px;
-  margin-bottom: 400px;
+  margin: 0px auto 400px auto;
   box-shadow: 0 0 12px 3px gray;
   opacity: .8;
   font-family: Georgia;
