@@ -208,8 +208,8 @@ Scatter.prototype.updateVis = function() {
   .style("stroke", vis.c)
   .attr("stroke-width", 3);
 
-  rects
-  .exit().remove();
+  // rects
+  // .exit().remove();
 
   var texts = vis.legend.selectAll("text").enter()
   .append("text")
@@ -219,8 +219,8 @@ Scatter.prototype.updateVis = function() {
   .style("text-anchor", "end")
   .text(function(d) { return d;});
 
-  texts
-  .exit().remove();
+  // texts
+  // .exit().remove();
 
 
   vis.dots.transition().duration(500)
