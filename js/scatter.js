@@ -236,7 +236,7 @@ Scatter.prototype.resize = function(w, h) {
 
   vis.xLabel
   .attr("x", vis.width)
-  .attr("y", -6);
+  .attr("y", vis.height-6);
   // .attr("transform", function(d,i) {
   //   return "translate(" + (vis.width / 2) + "," + vis.height + ")";
   // });
