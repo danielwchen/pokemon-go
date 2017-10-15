@@ -306,7 +306,7 @@ Scatter.prototype.pin = function(pokemon) {
     .attr("r", function(d) {
       if(pokemon.includes(d.name)) {
         console.log(d.name);
-        return 15;
+        return 13;
       } else {
         return 8;
       }
@@ -346,6 +346,15 @@ Scatter.prototype.pinType = function(type) {
 
   if (type) {
     vis.dots.transition().duration(80)
+    .attr("r", function(d) {
+      if(d.type1 == type) {
+        return 13;
+      } else if (d.type2 == type) {
+        return 13;
+      } else {
+        return 8;
+      }
+    })
     .attr("stroke-opacity",function(d) {
       if(d.type1 == type) {
         return 0.8;
@@ -356,18 +365,19 @@ Scatter.prototype.pinType = function(type) {
       }
     })
     .attr("fill-opacity",function(d) {
-      if(d.type1 == type || d.type2 == type) {
+      if(d.type1 == type) {
         return 0.8;
-      } else {
+      } else if (d.type2 == type) {
+        return 0.8;
+      }else {
         return 0.1;
       }
     });
   } else {vis.dots.transition().duration(80)
+    .attr("r", 10)
     .attr("stroke-opacity",0.6)
     .attr("fill-opacity",0.2);
   }
-
-  vis.updateVis();
 }
 
 
@@ -390,7 +400,13 @@ Scatter.prototype.initLegend = function() {
   .style("stroke", function(d,i) {
     return vis.c_range.type[i];
   })
-  .attr("stroke-width", 3);
+  .attr("stroke-width", 3)
+  .on("mouseover", function(d) {
+    vis.pinType(d)
+  })
+  .on("mouseout", function() {
+    vis.pinType();
+  });
 
   vis.legend_text1 = vis.svg.selectAll(".legend-text1")
   .data(vis.c_domain.type)
