@@ -89,13 +89,13 @@ function updateScatter (ind) {
     scatterStatic.pin(['Mewtwo', 'Magikarp', 'Gyarados']);
     scatterStatic.pinType();
   } else if (ind == 6) {
-    scatterStatic.setX('attack'); //cp
+    scatterStatic.setX('cp'); //cp
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
     scatterStatic.pin(['Mewtwo', 'Magikarp']);
     scatterStatic.pinType();
   } else if (ind == 7) {
-    scatterStatic.setX('attack'); //cp
+    scatterStatic.setX('cp'); //cp
     scatterStatic.setY('attack');
     scatterStatic.setC('type');
     scatterStatic.pin();
