@@ -338,7 +338,7 @@ Scatter.prototype.pin = function(pokemon) {
     .attr("fill-opacity",0.2);
   }
 
-  vis.updateVis();
+  // vis.updateVis();
 }
 
 Scatter.prototype.pinType = function(type) {

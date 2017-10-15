@@ -128,6 +128,11 @@ form {
     margin: 0 auto;
 }
 
+.sprites {
+  /*width: 100px;*/
+  /*height: 100px;*/
+  text-align:center;
+}
 
 
 /* YOUR CSS STYLES */
