@@ -105,7 +105,7 @@ Scatter.prototype.createVis = function() {
 
   vis.xLabel = vis.svg.selectAll(".x-label")
   .append("text")
-  .attr("class", "axis-label x-label")
+  .attr("class", "x-label")
   .text(vis.x_stat)
   .attr("transform", function(d,i) {
     return "translate(" + (vis.width / 2) + "," + vis.height + ")";
@@ -113,7 +113,7 @@ Scatter.prototype.createVis = function() {
 
   vis.yLabel = vis.svg.selectAll(".y-label")
   .append("text")
-  .attr("class", "axis-label y-label")
+  .attr("class", "y-label")
   .text(vis.y_stat)
   .attr("transform", function(d,i) {
     return "translate(-10," + (vis.height / 2) + ")rotate(270)";
