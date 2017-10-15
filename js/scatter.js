@@ -151,7 +151,7 @@ Scatter.prototype.createVis = function() {
     if (d.type2) { return vis.c(d.type2); } 
     else { return vis.c(d.type1); }
     })
-  .attr("stroke-width", 5)
+  .attr("stroke-width", 3)
   .on("mouseover", function(d) { vis.tip.show(d); })
   .on("mouseout", function(d) { vis.tip.hide(d); });
 
@@ -291,21 +291,21 @@ Scatter.prototype.pin = function(pokemon) {
       if(pokemon.includes(d.name)) {
         return 0.8;
       } else {
-        return 0.2;
+        return 0.1;
       }
     })
     .attr("stroke-opacity",function(d) {
       if(pokemon.includes(d.name)) {
         return 0.8;
       } else {
-        return 0.2;
+        return 0.1;
       }
     })
     .attr("fill-opacity",function(d) {
       if(pokemon.includes(d.name)) {
         return 0.8;
       } else {
-        return 0.2;
+        return 0.1;
       }
     });
   } else {vis.dots.transition().duration(80)
@@ -337,7 +337,7 @@ Scatter.prototype.pinType = function(type) {
       } else if (d.type2 == type) {
         return 0.8;
       } else {
-        return 0.2;
+        return 0.1;
       }
     })
     .attr("fill-opacity",function(d) {
@@ -346,7 +346,7 @@ Scatter.prototype.pinType = function(type) {
       } else if (d.type2 == type) {
         return 0.8;
       }else {
-        return 0.2;
+        return 0.1;
       }
     });
   } else {vis.dots.transition().duration(80)
@@ -372,14 +372,14 @@ Scatter.prototype.pinEvol = function(evol) {
       if(d.evol == evol) {
         return 0.8;
       } else {
-        return 0.2;
+        return 0.1;
       }
     })
     .attr("fill-opacity",function(d) {
       if(d.evol == evol) {
         return 0.8;
       }else {
-        return 0.2;
+        return 0.1;
       }
     });
   } else {vis.dots.transition().duration(80)
@@ -405,14 +405,14 @@ Scatter.prototype.pinLege = function(lege) {
       if(d.lege == lege) {
         return 0.8;
       } else {
-        return 0.2;
+        return 0.1;
       }
     })
     .attr("fill-opacity",function(d) {
       if(d.lege == lege) {
         return 0.8;
       }else {
-        return 0.2;
+        return 0.1;
       }
     });
   } else {vis.dots.transition().duration(80)
@@ -442,7 +442,7 @@ Scatter.prototype.initLegend = function() {
   .style("stroke", function(d,i) {
     return vis.c_range.type[i];
   })
-  .attr("stroke-width", 5)
+  .attr("stroke-width", 3)
   .on("mouseover", function(d) {
     vis.pinType(d)
   })
@@ -476,7 +476,7 @@ Scatter.prototype.initLegend = function() {
   .style("stroke", function(d,i) {
     return vis.c_range.evol[i];
   })
-  .attr("stroke-width", 5)
+  .attr("stroke-width", 3)
   .on("mouseover", function(d) {
     vis.pinEvol(d)
   })
@@ -510,7 +510,7 @@ Scatter.prototype.initLegend = function() {
   .style("stroke", function(d,i) {
     return vis.c_range.lege[i];
   })
-  .attr("stroke-width", 5)
+  .attr("stroke-width", 3)
   .on("mouseover", function(d) {
     vis.pinLege(d)
   })
