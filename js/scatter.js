@@ -71,7 +71,7 @@ Scatter.prototype.createVis = function() {
   var vis = this;
 
   // set the dimensions and margins of the graph
-  vis.margin = {top: 40, right: 40, bottom: 40, left: 40};
+  vis.margin = {top: 40, right: 80, bottom: 40, left: 40};
   vis.width = vis.winWidth - vis.margin.left - vis.margin.right;
   vis.height = vis.winHeight - vis.margin.top - vis.margin.bottom;
 
@@ -158,7 +158,7 @@ Scatter.prototype.createVis = function() {
 
   vis.legend.append("rect")
   .attr("class", "legend-rect")
-  .attr("x", vis.width - 18)
+  .attr("x", vis.width + 18)
   .attr("width", 18)
   .attr("height", 18)
   .attr("stroke-opacity", .6)
@@ -168,7 +168,7 @@ Scatter.prototype.createVis = function() {
   .attr("stroke-width", 3);
 
   vis.legend.append("text")
-  .attr("x", vis.width - 24)
+  .attr("x", vis.width)
   .attr("y", 9)
   .attr("dy", ".35em")
   .style("text-anchor", "end")
